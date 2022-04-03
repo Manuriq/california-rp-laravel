@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ForumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::view('/', 'dashboard')->name('dashboard');
     Route::view('/settings', 'settings')->name('settings');
+
+    Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
+        Route::view('/', 'admin')->name('admin');
+
+        Route::group(['middleware' => 'owner'], function() {
+            Route::resource("forum", ForumController::class);
+        });
+    });
 
 });
 

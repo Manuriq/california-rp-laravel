@@ -27,10 +27,10 @@
 	</style>
 
 </head>
+
 <body class="bg-black-alt font-sans leading-normal tracking-normal">
 
 @include("components.nav-bar-dash")
-
 	<!--Container-->
 	<div class="container w-full mx-auto pt-20">
 		
