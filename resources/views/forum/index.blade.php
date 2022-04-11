@@ -7,59 +7,28 @@
             <!--Template Card-->
             <div class="bg-gray-900 border border-gray-800 rounded shadow">
                 <div class="border-b border-gray-800 p-3">
-                    <h5 class="font-bold uppercase">Admin Panel - Gestion Forums <a href="{{ route("forum.create") }}"><button class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-300">Ajouter</button></a></h5>
+                    <h5 class="font-bold uppercase">Admin Panel - Gestion Forums</h5>
                 </div>
                 <div class="p-5 text-center">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-50 uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        Titre
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Description
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Ordre
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Status
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        <span class="sr-only">Edit</span>
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        <span class="sr-only">Supprimer</span>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($forums as $forum)
-                                <tr class="bg-gray-800 border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" class="px-6 py-4 font-medium text-white dark:text-white whitespace-nowrap">
-                                        {{ $forum->title }}
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        {{ $forum->desc }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $forum->order }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $forum->state }}
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <a href="#" class="font-medium text-red-600 dark:text-blue-500 hover:underline">Supprimer</a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <livewire:forum-table />
                     </div>
+                </div>
+                <div class="p-5 text-center">
+                    <form action="{{ route('forum.store') }}" method="post">
+                        @csrf
+                        <input class="w-full xl:w-3/4 p-2  rounded-md border  ml-auto mr-auto mt-2" placeholder="Titre"
+                        type="text" name="title" value="{{ old('title') }}" required>
+                        <textarea class="w-full xl:w-3/4 p-2  rounded-md border  ml-auto mr-auto mt-2" name="desc"
+                        placeholder="Description" id="" cols="30" rows="10" required>{{ old('desc') }}</textarea>
+                        <input class="w-full xl:w-3/4 p-2  rounded-md border  ml-auto mr-auto mt-2" placeholder="Ordre d'affichage"
+                        type="number" name="order" value="{{ old('order') }}" required><br>
+                        <label for="state">Activer / Désactiver</label><br>
+                        <input class="w-full xl:w-3/4 p-2  rounded-md border  ml-auto mr-auto mt-2"
+                        type="checkbox" name="state" value="{{ old('state') }}" required><br>
+                        <input class="p-2 w-1/5 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300 mt-2"
+                        type="submit" value="Ajouter">
+                    </form>
                 </div>
             </div>
             <!--/Template Card-->

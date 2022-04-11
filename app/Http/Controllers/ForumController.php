@@ -16,11 +16,8 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return view('forum.index', [
-            'forums' => DB::table('forums')
-                ->orderBy('order', 'asc')
-                ->get()
-        ]);
+        return view('forum.index');
+
     }
 
     /**
@@ -55,7 +52,7 @@ class ForumController extends Controller
         
         $forum->save();
         Session::flash('message', 'Ajout d\'un nouveau forum avec succes !'); 
-        return view('forum.create');
+        return view('forum.index');
     }
 
     /**
