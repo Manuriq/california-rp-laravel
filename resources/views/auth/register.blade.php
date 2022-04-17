@@ -28,12 +28,12 @@
           <div class="flex justify-center p-6 sm:p-6 md:w-1/2">
             <div class="w-full">
             <img class="mx-auto" src="{{asset('img/sfrp_version_chaton_tachete.png')}}" alt="Office"/>
-            <form action="{{ route("login") }}" method="POST">
+            <form action="{{ route("register") }}" method="POST">
                 @csrf
               <h1
                 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200"
               >
-                Connexion
+                Inscription
               </h1>
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Pseudo</span>
@@ -76,30 +76,22 @@
               <!-- You should use a button here, as the anchor is only used for the example  -->
               <input class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150
               bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-              type="submit" value="Connexion">
+              type="submit" value="Inscription">
             </form>
               <hr class="mt-8" />
                 @if(count($errors) > 0 )
                     @foreach($errors->all() as $error)
                     <span class="text-xs text-red-600 dark:text-red-400">
-                        {{$message}}
+                        {{$error}}
                     </span>
                     @endforeach            
                 @endif
-              <p class="mt-4">
-                <a
-                  class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                  href="{{ route("password.request") }}" 
-                >
-                  Mot de passe oublié?
-                </a>
-              </p>
               <p class="mt-1">
                 <a
                   class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                  href="{{ route("register") }}"
+                  href="{{ route("login") }}"
                 >
-                  Créer un compte
+                  Vous avez déjà un compte? Connectez-vous!
                 </a>
               </p>
             </div>

@@ -16,19 +16,21 @@ use App\Http\Controllers\ForumController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     
-    Route::view('/', 'dashboard')->name('dashboard');
+    Route::view('/', 'panel.index')->name('dashboard');
     Route::view('/settings', 'settings')->name('settings');
     Route::get('/validateip', [ValidateIp::class, 'index'])->name('ip');
+
+    Route::resource("/forum", ForumController::class);
 
     Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
         Route::view('/', 'admin')->name('admin');
         Route::group(['middleware' => 'owner'], function() {
-            Route::resource("forum", ForumController::class);
+            
         });
     });
 

@@ -16,8 +16,13 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return view('forum.index');
-
+        return view('panel.forum', [
+            'forums' => Forum::where('state', 0)
+            ->orderBy('order', 'ASC')
+            ->get()
+        ]);
+        //Session::flash('message', 'Vous devez vous connecter avant de pouvoir passer la withelist !'); 
+        //Session::flash('color', 'bg-red-500'); 
     }
 
     /**
