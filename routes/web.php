@@ -25,6 +25,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     Route::view('/settings', 'settings')->name('settings');
     Route::get('/validateip', [ValidateIp::class, 'index'])->name('ip');
 
+
+    
     Route::resource("/forum", ForumController::class);
 
     Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {

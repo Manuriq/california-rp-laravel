@@ -1,137 +1,81 @@
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>San Fierro RolePlay </title>
-    <meta name="description" content="description here">
-    <meta name="keywords" content="keywords,here">
-	
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
-	@livewireStyles
-	<style>
-		.bg-black-alt  {
-			background:#191919;
-		}
-		.text-black-alt  {
-			color:#191919;
-		}
-		.border-black-alt {
-			border-color: #191919;
-		}
-		
-	</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>San Fierro RolePlay - Dashboard</title>
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    <!-- Styles -->
+	<link href="{{ @asset('css/lib/calendar2/pignose.calendar.min.css') }}" rel="stylesheet">
+    <link href="{{ @asset('css/lib/chartist/chartist.min.css') }}" rel="stylesheet">
+    <link href="{{ @asset('css/lib/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ @asset('css/lib/themify-icons.css') }}" rel="stylesheet">
+    <link href="{{ @asset('css/lib/owl.carousel.min.css') }}" rel="stylesheet" />
+    <link href="{{ @asset('css/lib/owl.theme.default.min.css') }}" rel="stylesheet" />
+    <link href="{{ @asset('css/lib/weather-icons.css') }}" rel="stylesheet" />
+    <link href="{{ @asset('css/lib/menubar/sidebar.css') }}" rel="stylesheet">
+    <link href="{{ @asset('css/lib/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ @asset('css/lib/helper.css') }}" rel="stylesheet">
+    <link href="{{ @asset('css/style.css') }}" rel="stylesheet">
+
+	<script src="https://kit.fontawesome.com/e8688b67db.js" crossorigin="anonymous"></script>
 
 </head>
 
-<body class="bg-black-alt font-sans leading-normal tracking-normal">
+<body>
+	<!-- /# Start Sidebar -->
+    @include('components.sidebar')
+    <!-- /# End Sidebar -->
 
-@include("components.nav-bar-dash")
-	<!--Container-->
-	<div class="container w-full mx-auto pt-20">
-		
-		@yield("content")
-		
-	</div> 
-	<!--/container-->
+	<!-- /# Start Header -->
+	@include('components.header')
+	<!-- /# End Header -->
+
+	<!-- /# Start Main -->
+    @yield('content')
+	<!-- /# End Main -->
 	
-	<footer class="bg-gray-900 border-t border-gray-400 shadow">	
-		<div class="container max-w-md mx-auto flex py-8">
+	<!-- jquery vendor -->
+	<script src="{{ @asset('js/lib/jquery.min.js') }}"></script>
+	<script src="{{ @asset('js/lib/jquery.nanoscroller.min.js') }}"></script>
+	<!-- nano scroller -->
+	<script src="{{ @asset('js/lib/menubar/sidebar.js') }}"></script>
+	<script src="{{ @asset('js/lib/preloader/pace.min.js') }}"></script>
+	<!-- sidebar -->
 
-			<div class="w-full mx-auto flex flex-wrap">
-				<div class="flex w-full md:w-1/2 ">
-					<div class="px-8">
-						<h3 class="font-bold text-gray-100">About</h3>
-						<p class="py-4 text-gray-600 text-sm">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia. 
-						</p>
-					</div>
-				</div>
-				
-				<div class="flex w-full md:w-1/2">
-					<div class="px-8">
-					<h3 class="font-bold text-gray-100">Social</h3>
-						<ul class="list-reset items-center text-sm pt-3">
-						  <li>
-							<a class="inline-block text-gray-600 no-underline hover:text-gray-100 hover:text-underline py-1" href="#">Add social link</a>
-						  </li>
-						  <li>
-							<a class="inline-block text-gray-600 no-underline hover:text-gray-100 hover:text-underline py-1" href="#">Add social link</a>
-						  </li>
-							<li>
-							<a class="inline-block text-gray-600 no-underline hover:text-gray-100 hover:text-underline py-1" href="#">Add social link</a>
-						  </li>
-						</ul>
-					</div>
-				</div>
-			</div>
-        
+	<script src="{{ @asset('js/lib/bootstrap.min.js') }}"></script>
+	<script src="{{ @asset('js/scripts.js') }}"></script>
+	<!-- bootstrap -->
 
-		
-		</div>
-	</footer>
-@livewireScripts
-<script>
-	
-	
-	/*Toggle dropdown list*/
-	/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-	var userMenuDiv = document.getElementById("userMenu");
-	var userMenu = document.getElementById("userButton");
-	
-	var navMenuDiv = document.getElementById("nav-content");
-	var navMenu = document.getElementById("nav-toggle");
-	
-	document.onclick = check;
-
-	function check(e){
-	  var target = (e && e.target) || (event && event.srcElement);
-
-	  //User Menu
-	  if (!checkParent(target, userMenuDiv)) {
-		// click NOT on the menu
-		if (checkParent(target, userMenu)) {
-		  // click on the link
-		  if (userMenuDiv.classList.contains("invisible")) {
-			userMenuDiv.classList.remove("invisible");
-		  } else {userMenuDiv.classList.add("invisible");}
-		} else {
-		  // click both outside link and outside menu, hide menu
-		  userMenuDiv.classList.add("invisible");
-		}
-	  }
-	  
-	  //Nav Menu
-	  if (!checkParent(target, navMenuDiv)) {
-		// click NOT on the menu
-		if (checkParent(target, navMenu)) {
-		  // click on the link
-		  if (navMenuDiv.classList.contains("hidden")) {
-			navMenuDiv.classList.remove("hidden");
-		  } else {navMenuDiv.classList.add("hidden");}
-		} else {
-		  // click both outside link and outside menu, hide menu
-		  navMenuDiv.classList.add("hidden");
-		}
-	  }
-	  
-	}
-
-	function checkParent(t, elm) {
-	  while(t.parentNode) {
-		if( t == elm ) {return true;}
-		t = t.parentNode;
-	  }
-	  return false;
-	}
+	<script src="{{ @asset('js/lib/calendar-2/moment.latest.min.js') }}"></script>
+	<script src="{{ @asset('js/lib/calendar-2/pignose.calendar.min.js') }}"></script>
+	<script src="{{ @asset('js/lib/calendar-2/pignose.init.js') }}"></script>
 
 
-</script>
+	<script src="{{ @asset('js/lib/weather/jquery.simpleWeather.min.js') }}"></script>
+	<script src="{{ @asset('js/lib/weather/weather-init.js') }}"></script>
+	<script src="{{ @asset('js/lib/circle-progress/circle-progress.min.js') }}"></script>
+	<script src="{{ @asset('js/lib/circle-progress/circle-progress-init.js') }}"></script>
+	<script src="{{ @asset('js/lib/chartist/chartist.min.js') }}"></script>
+	<script src="{{ @asset('js/lib/sparklinechart/jquery.sparkline.min.js') }}"></script>
+	<script src="{{ @asset('js/lib/sparklinechart/sparkline.init.js') }}"></script>
+	<script src="{{ @asset('js/lib/owl-carousel/owl.carousel.min.js') }}"></script>
+	<script src="{{ @asset('js/lib/owl-carousel/owl.carousel-init.js') }}"></script>
+	<!-- scripit init-->
+	<script src="{{ @asset('js/dashboard2.js') }}"></script>
 
 </body>
+
 </html>

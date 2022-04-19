@@ -6,23 +6,37 @@
     Forum
   </p>
 </div>
+<div class="w-full">
+  <div class="flex w-full">
+    <div class="flex-none w-14 h-14 ...">
+      01
+    </div>
+    <div class="grow h-14 ...">
+      02
+    </div>
+    <div class="flex-none w-14 h-14 ...">
+      03
+    </div>
+  </div>
+</div>
+
 
 @foreach ($forums as $forum)
 
-<div class="w-full mb-8 rounded-lg shadow-xs overflow-hidden">
-  <div class="w-full text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+<div class="w-full mb-8 rounded-lg shadow-xs">
+  <div class="w-full text-xs font-semibold tracking-wide text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
     <div class="px-4 py-3">
       {{ $forum->title }}
     </div>
   </div>
-  <div class="w-full bg-white dark:divide-gray-700 dark:bg-gray-800 grid-rows-3 text-sm">
-    <div class="col-span-2 px-4 py-3">
+  <div class="w-full bg-white dark:divide-gray-700 dark:bg-gray-800 flex flex-row">
+    <div class="basis-3/5 px-4 py-3">
       Test
     </div>
-    <div class="col-span-1  px-4 py-3">
+    <div class="basis-1/5 px-4 py-3">
       Test
     </div>
-    <div class="col-span-1 px-4 py-3">
+    <div class="basis-1/5 w-1/5 px-4 py-3">
       Test
     </div>
   </div>
