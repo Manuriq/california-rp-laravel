@@ -1,39 +1,56 @@
 @extends("layouts.dashboard")
 
 @section("content")
-<div>
-    <div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-100 leading-normal">
-        <div class="w-full md:w-1/2 xl:w-3/4 p-3 ml-auto mr-auto">
-            <!--Template Card-->
-            <div class="bg-gray-900 border border-gray-800 rounded shadow">
-                <div class="border-b border-gray-800 p-3">
-                    <h5 class="font-bold uppercase">Admin Panel - Gestion Forums</h5>
-                </div>
-                <div class="p-5 text-center">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <livewire:forum-table />
-                    </div>
-                </div>
-                <div class="p-5 text-center">
-                    <form action="{{ route('forum.store') }}" method="post">
-                        @csrf
-                        <input class="w-full xl:w-3/4 p-2  rounded-md border  ml-auto mr-auto mt-2" placeholder="Titre"
-                        type="text" name="title" value="{{ old('title') }}" required>
-                        <textarea class="w-full xl:w-3/4 p-2  rounded-md border  ml-auto mr-auto mt-2" name="desc"
-                        placeholder="Description" id="" cols="30" rows="10" required>{{ old('desc') }}</textarea>
-                        <input class="w-full xl:w-3/4 p-2  rounded-md border  ml-auto mr-auto mt-2" placeholder="Ordre d'affichage"
-                        type="number" name="order" value="{{ old('order') }}" required><br>
-                        <label for="state">Activer / Désactiver</label><br>
-                        <input class="w-full xl:w-3/4 p-2  rounded-md border  ml-auto mr-auto mt-2"
-                        type="checkbox" name="state" value="{{ old('state') }}" required><br>
-                        <input class="p-2 w-1/5 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300 mt-2"
-                        type="submit" value="Ajouter">
-                    </form>
-                </div>
+
+<div class="content-wrap">
+  <div class="main">
+      <div class="container-fluid">
+          <!-- /# row -->
+          <section id="main-content">
+            <div class="page-title mt-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('forum.index') }}">Accueil</a></li>
+                </ol>
             </div>
-            <!--/Template Card-->
-        </div>            
-    <!--/ Console Content-->       
-    </div>
+            @foreach ($categories as $categorie)
+                
+            <div class="mb-4">
+                <!-- Card Header - Accordion -->
+                <div class="d-block card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-special text-uppercase">{{ $categorie->title }}</h6>
+                </div>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show">
+                    @foreach ($categorie->forums as $forum)
+                    <div class="card-body border-bottom">
+                        <div class="row align-items-center ml-4">
+                            <div class="col-xl-5">
+                                <a href="{{ route('f.show', $forum->id) }}" class="text-decoration-none"><h6 class="mb-0 font-weight-bold">{{ $forum->title }}</h6></a>
+                                {{ $forum->desc }}
+                            </div>
+                            <div class="col-xl-2 text-center"><b>{{ $forum->countPost($forum->id) }}</b><br>Discussions</div>
+                            @if ($forum->getLastPost($forum->id) != null)
+                            <div class="col-xl-1 text-center">
+                                <img class="img-profile rounded-circle" src="{{ asset('avatars/' . $forum->getLastPost($forum->id)->compte->cAvatarUrl) }}" width="50px" height="50px">
+                            </div>
+                            <div class="col-xl-3 text-center text-white">               
+                                    <b>Sujet:</b> <a href="{{ route('p.show', [$forum->id, $forum->getLastPost($forum->id)]) }}">{{ $forum->getLastPost($forum->id)->title }}</a> <br>
+                                    <b>Par: {{ $forum->getLastPost($forum->id)->compte->cNom }}</b><br>
+                                    <b>Posté le:</b> {{ $forum->getLastPost($forum->id)->created_at->format('d/m/Y à H\hi') }}        
+                            </div>
+                            @else
+                            <div class="col-xl-4 text-center text-white">               
+                                Aucun sujet n'a été posté           
+                            </div>
+                            @endif
+                        </div> 
+                      </div> 
+                    @endforeach
+                </div>
+              </div>
+              @endforeach
+          </section>
+      </div>
+  </div>
 </div>
 @endsection

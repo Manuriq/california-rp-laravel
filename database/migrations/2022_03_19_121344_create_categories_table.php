@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('forums', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('categorie_id');
-            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string("title");
-            $table->string("desc")->nullable();
             $table->integer('order')->unsigned()->nullable();
-            $table->boolean('state')->nullable()->default(false);
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forums');
+        Schema::dropIfExists('categories');
     }
 };

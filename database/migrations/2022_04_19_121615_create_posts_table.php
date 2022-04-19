@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('forums', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('categorie_id');
-            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedInteger('forum_id');
+            $table->unsignedInteger('compte_id');
+            $table->foreign('forum_id')->references('id')->on('forums')->onDelete('cascade');
+            $table->foreign('compte_id')->references('id')->on('comptes')->onDelete('cascade');
             $table->string("title");
-            $table->string("desc")->nullable();
-            $table->integer('order')->unsigned()->nullable();
+            $table->text("content");
             $table->boolean('state')->nullable()->default(false);
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forums');
+        Schema::dropIfExists('posts');
     }
 };

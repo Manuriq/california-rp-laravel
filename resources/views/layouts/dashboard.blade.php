@@ -30,6 +30,7 @@
     <link href="{{ @asset('css/lib/helper.css') }}" rel="stylesheet">
     <link href="{{ @asset('css/style.css') }}" rel="stylesheet">
 
+	<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 	<script src="https://kit.fontawesome.com/e8688b67db.js" crossorigin="anonymous"></script>
 
 </head>

@@ -44,7 +44,7 @@ class CreateComptesTable extends Migration
             $table->integer('cVerifyEmail')->default(0);
             $table->integer('ec_NextTimeBan')->default(1);
             $table->integer('cLastActivity')->default(0);
-            $table->longText('cAvatarUrl')->nullable();
+            $table->longText('cAvatarUrl')->default("default.png");
             $table->integer('posts')->default(0);
             $table->string('roles')->nullable();
         });

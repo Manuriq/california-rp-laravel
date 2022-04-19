@@ -76,7 +76,10 @@
 /*  Opensans
 --------------- */
 .card-body {
-  padding: 0;
+  padding: 12px;
+}
+.border-bottom {
+  border-bottom: 1px solid #4a4a4a!important;
 }
 .card {
   background-color: #343957;
@@ -104,12 +107,16 @@
   font-family: 'Roboto', sans-serif;
   margin-bottom: 12px;
 }
+.card-header {
+  background: #282c40;
+}
+.collapse {
+  background: #161720;
+}
 .card-header-right-icon {
   display: inline-block;
-  float: right;
 }
 .card-header-right-icon li {
-  float: right;
   padding-left: 14px;
   color: #868e96;
   cursor: pointer;
@@ -3676,15 +3683,28 @@ tbody tr td:last-child {
 body {
   font-family: 'Roboto', sans-serif;
   background: rgb(52 57 87);
-  color: #868e96;
+  color: #bdc1c5;
   font-size: 14px;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+  color: rgb(52 57 87);;
 }
 a,
 button {
   outline: none!important;
   text-decoration: none!important;
-  color: #868e96;
+  color: #e1e1e1;
   transition: all 0.2s ease 0s;
+}
+.breadcrumb{
+  background-color: rgba(99, 102, 241, 1);
+  color: white;
+}
+.breadcrumb-item>a{
+  color: white;
+}
+.breadcrumb-item>a:hover{
+  color: #232532;
 }
 a.active,
 button.active,
@@ -3692,7 +3712,7 @@ a:focus,
 button:focus,
 a:hover,
 button:hover {
-  color: #252525;
+  color: rgba(99, 102, 241, 1);
   outline: none!important;
   text-decoration: none!important;
 }
@@ -3769,6 +3789,10 @@ h6.h1 {
 -------------------*/
 .color-primary,
 .text-primary {
+  color: #5873fe;
+}
+.color-special,
+.text-special {
   color: #5873fe;
 }
 .color-success,

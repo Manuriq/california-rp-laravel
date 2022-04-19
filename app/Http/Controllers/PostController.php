@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Forum;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
-class ForumController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        //Session::flash('message', 'Vous devez vous connecter avant de pouvoir passer la withelist !'); 
-        //Session::flash('color', 'bg-red-500'); 
+        //
     }
 
     /**
@@ -25,9 +24,12 @@ class ForumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Forum $forum)
     {
-        return view('forum.create');
+
+        return view('forum.post.create', [
+            'forum' => $forum
+        ]);
     }
 
     /**
@@ -36,34 +38,39 @@ class ForumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($forumid, Request $request)
     {
         $request->validate([
-            'title' => ['required', 'string', 'max:25'],
-            'desc' => ['string', 'max:150'],
-            'order' => ['integer', 'required', 'min:1']
+            'title' => 'required',
+            'content' => ['required']
         ]);
-        $forum = Forum::create([
+
+        $post = Post::create([
             'title' => $request->title,
-            'desc' => $request->desc,
-            'order' => $request->order,
-            'state' => $request->state
+            'content' => $request->content,
+            'forum_id' => $forumid,
+            'compte_id' => Auth::User()->id
         ]);
-        
-        $forum->save();
-        Session::flash('message', 'Ajout d\'un nouveau forum avec succes !'); 
-        return view('forum.index');
+
+        $forum = Forum::find($request->forumId);
+
+        return view('forum.post.show', [
+            'post' => $post,
+            'forum' => $forum
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Forum  $forum
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Forum $forum)
+    public function show(Forum $forum, Post $post)
     {
-        return view('forum.forum.show', [
+
+        return view('forum.post.show', [
+            'post' => $post,
             'forum' => $forum
         ]);
     }
@@ -71,10 +78,10 @@ class ForumController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Forum  $forum
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Forum $forum)
+    public function edit($id)
     {
         //
     }
@@ -83,10 +90,10 @@ class ForumController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Forum  $forum
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Forum $forum)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -94,10 +101,10 @@ class ForumController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Forum  $forum
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Forum $forum)
+    public function destroy($id)
     {
         //
     }
