@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -33,9 +35,20 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Post $post, Request $request)
     {
-        //
+        $request->validate([
+            'content' => ['required']
+        ]);
+
+        $message = Message::create([
+            'content' => $request->content,
+            'post_id' => $post->id,
+            'compte_id' => Auth::User()->id
+        ]);
+        return view('forum.post.show', [
+            'post' => $post,
+        ]);
     }
 
     /**

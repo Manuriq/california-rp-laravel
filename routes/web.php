@@ -4,6 +4,8 @@ use App\Http\Controllers\ValidateIp;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategorieController;
 
 /*
@@ -24,16 +26,27 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     
     Route::view('/', 'panel.index')->name('dashboard');
-    Route::view('/settings', 'settings')->name('settings');
-    Route::get('/validateip', [ValidateIp::class, 'index'])->name('ip');
 
+    // Les routes Profile
+    Route::group(['prefix' => 'profile'], function() {
+        Route::controller(ProfileController::class)->group(function () {
+            Route::get('/validateip', 'validateip')->name('profile.ip');
+            Route::post('/avatar', 'update')->name('profile.update');
+            Route::get('/{compte}', 'show')->name('profile.show');
+        });
+    });
 
+    // Les routes forum
     Route::group(['prefix' => 'forum'], function() {
 
         Route::controller(PostController::class)->group(function () {
             Route::get('/{forum}/create', 'create')->name('p.create');
             Route::post('/{forum}/store', 'store')->name('p.store');
             Route::get('/{forum}/{post}', 'show')->name('p.show');
+        });
+
+        Route::controller(MessageController::class)->group(function () {
+            Route::post('message/{post}/store', 'store')->name('m.store');
         });
 
         Route::get('/', [CategorieController::class, 'index'])->name('forum.index');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Forum;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,25 +39,27 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($forumid, Request $request)
+    public function store(Post $post, Request $request)
     {
         $request->validate([
             'title' => 'required',
             'content' => ['required']
         ]);
 
-        $post = Post::create([
+        Post::create([
             'title' => $request->title,
             'content' => $request->content,
-            'forum_id' => $forumid,
+            'forum_id' => $forum->id,
             'compte_id' => Auth::User()->id
         ]);
 
-        $forum = Forum::find($request->forumId);
+        $messages = Message::where('post_id', $post->id)
+        ->orderBy('created_at', 'ASC')
+        ->paginate(10);
 
         return view('forum.post.show', [
             'post' => $post,
-            'forum' => $forum
+            'messages' => $messages
         ]);
     }
 
@@ -68,10 +71,14 @@ class PostController extends Controller
      */
     public function show(Forum $forum, Post $post)
     {
+        $messages = Message::where('post_id', $post->id)
+            ->orderBy('created_at', 'ASC')
+            ->paginate(10);
 
         return view('forum.post.show', [
             'post' => $post,
-            'forum' => $forum
+            'forum' => $forum,
+            'messages' => $messages
         ]);
     }
 

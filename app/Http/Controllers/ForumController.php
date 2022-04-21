@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Forum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -63,8 +64,14 @@ class ForumController extends Controller
      */
     public function show(Forum $forum)
     {
+
+        $posts = Post::where('forum_id', $forum->id)
+        ->orderBy('updated_at', 'DESC')
+        ->paginate(10);
+
         return view('forum.forum.show', [
-            'forum' => $forum
+            'forum' => $forum,
+            'posts' => $posts
         ]);
     }
 

@@ -22,7 +22,7 @@
                                 <input type="text" class="form-control input-default" name="title" placeholder="Titre du sujet" value="{{ old('title') }}" required>
                             </div>
                             <div class="form-group">
-                                <textarea class="ckeditor form-control" name="content" required>{{ old('content') }}</textarea>
+                                <textarea id="editor" class="ckeditor form-control" name="content" required>{{ old('content') }}</textarea>
                             </div>
                             <button type="submit" class="btn btn-default">Envoyer</button>
                         </form>

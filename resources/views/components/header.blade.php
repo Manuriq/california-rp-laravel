@@ -9,7 +9,7 @@
                         <span class="line"></span>
                     </div>
                 </div>
-                <div class="float-right">
+                <div class="float-right row align-items-center">
                     <div class="dropdown dib">
                         <div class="header-icon" data-toggle="dropdown">
                             <i class="fa-solid fa-bell"></i>
@@ -85,43 +85,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="dropdown dib">
-                        <div class="header-icon" data-toggle="dropdown">
-                            <span class="user-avatar">{{ Auth::User()->cNom }}
-                                <i class="ti-angle-down f-s-10"></i>
-                            </span>
-                            <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-user"></i>
-                                                <span>Profile</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-envelope"></i>
-                                                <span>Messages</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa-solid fa-gear"></i>
-                                                <span>Paramètres</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="{{ route('logout') }}">
-                                                <i class="fa-solid fa-right-from-bracket"></i>
-                                                <span>Déconnexion</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                    <div class="dropdown show">
+                        <a class="btn btn-default dropdown-toggle" href="#" role="button" id="user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::User()->cNom }}
+                        </a>   
+                        <div class="dropdown-menu" aria-labelledby="user">
+                          <a class="dropdown-item" href="{{ route('profile.show', Auth::User()->id) }}"><i class="fas fa-user"></i> Profile</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
                         </div>
                     </div>
                 </div>
@@ -129,3 +99,10 @@
         </div>
     </div>
 </div>
+@if(Session::has('message'))
+<div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show mb-" role="alert">
+    <center>
+    <strong>{{ Session::get('message') }}</strong>
+    </center>
+</div>
+@endif

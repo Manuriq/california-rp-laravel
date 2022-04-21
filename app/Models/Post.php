@@ -28,4 +28,10 @@ class Post extends Model
     {
         return $this->hasMany(Message::class);
     }
+
+    public function countMessage($id)
+    {
+        return Message::where('post_id', $id)
+            ->count();
+    }
 }

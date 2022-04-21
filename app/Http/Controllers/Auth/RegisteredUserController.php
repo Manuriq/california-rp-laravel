@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Comptes;
+use App\Models\Compte;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'string', 'min:6'],
             'repeat_password' => 'required|same:password|min:6'
         ]);
-        $compte = Comptes::create([
+        $compte = Compte::create([
             'cNom' => $request->cNom,
             'cEmail' => $request->cEmail,
             'password' => Hash::make($request->password),

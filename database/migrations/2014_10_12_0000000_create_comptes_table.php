@@ -18,6 +18,7 @@ class CreateComptesTable extends Migration
             $table->string('cNom', 24);
             $table->string('password', 1024);
             $table->string('cIp', 16)->nullable();
+            $table->integer('cIpUpdated')->default(0);
             $table->integer('cStatut')->default(0);
             $table->integer('cInit')->default(0);
             $table->string('cUid', 16)->nullable();
@@ -44,8 +45,7 @@ class CreateComptesTable extends Migration
             $table->integer('cVerifyEmail')->default(0);
             $table->integer('ec_NextTimeBan')->default(1);
             $table->integer('cLastActivity')->default(0);
-            $table->longText('cAvatarUrl')->default("default.png");
-            $table->integer('posts')->default(0);
+            $table->string('cAvatarUrl')->default("avatars/default.png");
             $table->string('roles')->nullable();
         });
     }

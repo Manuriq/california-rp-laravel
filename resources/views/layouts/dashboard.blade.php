@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>San Fierro RolePlay - Dashboard</title>
     <!-- ================= Favicon ================== -->
+	<link rel="icon" type="image/x-icon" href="{{ @asset('img/sfrp_favico.png') }}">
     <!-- Standard -->
     <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
     <!-- Retina iPad Touch Icon-->
@@ -30,7 +31,7 @@
     <link href="{{ @asset('css/lib/helper.css') }}" rel="stylesheet">
     <link href="{{ @asset('css/style.css') }}" rel="stylesheet">
 
-	<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+	<script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
 	<script src="https://kit.fontawesome.com/e8688b67db.js" crossorigin="anonymous"></script>
 
 </head>
@@ -76,7 +77,9 @@
 	<script src="{{ @asset('js/lib/owl-carousel/owl.carousel-init.js') }}"></script>
 	<!-- scripit init-->
 	<script src="{{ @asset('js/dashboard2.js') }}"></script>
-
+	<script>
+		CKEDITOR.replace( 'editor' );
+	</script>
 </body>
 
 </html>

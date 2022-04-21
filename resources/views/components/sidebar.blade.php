@@ -4,7 +4,7 @@
             <ul>
                 <div class="logo">
                     <a href="index.html">
-                        <img src="{{ asset('img/sfrp_favico.png') }}" width="100px" height="100px" alt="" /><br>
+                        <img class="default-logo" src="{{ asset('img/sfrp_favico.png') }}" width="100px" height="100px" alt="" /><br>
                         <span>SFRP - Dashboard</span>
                     </a>
                 </div>
