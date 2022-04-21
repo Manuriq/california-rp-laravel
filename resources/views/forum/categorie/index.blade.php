@@ -9,7 +9,7 @@
           <section id="main-content">
             <div class="page-title mt-4">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('forum.index') }}">Accueil</a></li>
+                    <li class="breadcrumb-item">Accueil</li>
                 </ol>
             </div>
             @foreach ($categories as $categorie)

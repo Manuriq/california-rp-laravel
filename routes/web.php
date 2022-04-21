@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     // Les routes forum
     Route::group(['prefix' => 'forum'], function() {
 
-        Route::get('/', [CategorieController::class, 'index'])->name('forum.index');
+        Route::get('/', [CategorieController::class, 'index'])->name('categorie.index');
 
         Route::controller(ForumController::class)->group(function () {
             Route::get('/{forum}', 'show')->name('f.show');
@@ -80,8 +80,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
 
 
         Route::group(['prefix' => 'forum'], function() {
-            Route::controller(CategorieController::class)->group(function () {
-                Route::get('/', 'list')->name('forum.list');
+            
+            Route::controller(ForumController::class)->group(function () {
+                Route::get('/', 'index')->name('forum.index');
                 Route::get('/create', 'create')->name('forum.create');
                 Route::post('/store', 'store')->name('forum.store');
             });

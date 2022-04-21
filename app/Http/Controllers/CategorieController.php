@@ -14,7 +14,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        return view('forum.index', [
+        return view('forum.categorie.index', [
             'categories' => Categorie::orderBy('order', 'ASC')
             ->get()
         ]);

@@ -17,8 +17,10 @@ class ForumController extends Controller
      */
     public function index()
     {
-        //Session::flash('message', 'Vous devez vous connecter avant de pouvoir passer la withelist !'); 
-        //Session::flash('color', 'bg-red-500'); 
+        return view('forum.forum.index', [
+            'forums' => Forum::orderBy('order', 'ASC')
+                        ->get()
+        ]);
     }
 
     /**

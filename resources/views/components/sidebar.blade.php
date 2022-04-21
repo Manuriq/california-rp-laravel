@@ -11,9 +11,10 @@
 
                 <li class="label">Dashboard</li>
                 <li><a href="{{ route('dashboard') }}"><i class="fa-solid fa-house"></i> Accueil</a></li>
-                <li><a href="{{ route('forum.index') }}"><i class="fa-solid fa-comment-dots"></i> Forum</a></li>
+                <li><a href="{{ route('categorie.index') }}"><i class="fa-solid fa-comment-dots"></i> Forum</a></li>
                 <li class="label">Administration</li>
-                <li><a href="app-email.html"><i class="fa-solid fa-user-gear"></i> Gestion Utilisateurs</a></li>
+                <li><a href="#"><i class="fa-solid fa-user-gear"></i> Gestion Utilisateurs</a></li>
+                <li><a href="{{ route('forum.index') }}"><i class="fa-solid fa-user-gear"></i> Gestion Forum</a></li>
             </ul>
         </div>
     </div>

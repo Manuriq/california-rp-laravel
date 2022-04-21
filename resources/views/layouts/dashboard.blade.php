@@ -8,16 +8,6 @@
     <title>San Fierro RolePlay - Dashboard</title>
     <!-- ================= Favicon ================== -->
 	<link rel="icon" type="image/x-icon" href="{{ @asset('img/sfrp_favico.png') }}">
-    <!-- Standard -->
-    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
-    <!-- Retina iPad Touch Icon-->
-    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
-    <!-- Retina iPhone Touch Icon-->
-    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
-    <!-- Standard iPad Touch Icon-->
-    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
-    <!-- Standard iPhone Touch Icon-->
-    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
     <!-- Styles -->
 	<link href="{{ @asset('css/lib/calendar2/pignose.calendar.min.css') }}" rel="stylesheet">
     <link href="{{ @asset('css/lib/chartist/chartist.min.css') }}" rel="stylesheet">
@@ -30,9 +20,6 @@
     <link href="{{ @asset('css/lib/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ @asset('css/lib/helper.css') }}" rel="stylesheet">
     <link href="{{ @asset('css/style.css') }}" rel="stylesheet">
-
-	<script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
-	<script src="https://kit.fontawesome.com/e8688b67db.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -70,13 +57,17 @@
 	<script src="{{ @asset('js/lib/weather/weather-init.js') }}"></script>
 	<script src="{{ @asset('js/lib/circle-progress/circle-progress.min.js') }}"></script>
 	<script src="{{ @asset('js/lib/circle-progress/circle-progress-init.js') }}"></script>
-	<script src="{{ @asset('js/lib/chartist/chartist.min.js') }}"></script>
+
 	<script src="{{ @asset('js/lib/sparklinechart/jquery.sparkline.min.js') }}"></script>
 	<script src="{{ @asset('js/lib/sparklinechart/sparkline.init.js') }}"></script>
 	<script src="{{ @asset('js/lib/owl-carousel/owl.carousel.min.js') }}"></script>
 	<script src="{{ @asset('js/lib/owl-carousel/owl.carousel-init.js') }}"></script>
 	<!-- scripit init-->
 	<script src="{{ @asset('js/dashboard2.js') }}"></script>
+
+	
+	<script src="{{ @asset('ckeditor/ckeditor.js') }}"></script>
+	<script src="https://kit.fontawesome.com/e8688b67db.js" crossorigin="anonymous"></script>
 	<script>
 		CKEDITOR.replace( 'editor' );
 	</script>

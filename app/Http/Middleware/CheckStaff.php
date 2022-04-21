@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CheckStaff
 {
@@ -18,7 +19,9 @@ class CheckStaff
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->cAdmin < 1){
-            return redirect()->with('error', 'Vous n\'avez pas le role nécessaire pour accéder à cette page');
+            Session::flash("message", "Vous n'avez pas l'autorisation d'accéder à cette page."); 
+            Session::flash('alert-class', 'alert-danger'); 
+            return redirect()->route('dashboard');
         }
         return $next($request);
     }

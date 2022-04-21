@@ -9,7 +9,7 @@
           <section id="main-content">
             <div class="page-title mt-4">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('forum.index') }}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('categorie.index') }}">Accueil</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('f.show', $post->forum->id) }}">{{ $post->forum->title }}</a></li>
                     <li class="breadcrumb-item">{{ $post->title }}</a>
                 </ol>
