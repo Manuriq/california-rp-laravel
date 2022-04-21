@@ -816,6 +816,12 @@ a.dt-button.active:not(.disabled) {
   position: relative;
   top: -3px;
 }
+.avatar-img-message{
+  width: 100px;
+  height: 100px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 .user-avatar {
   font-size: 14px;
   font-weight: 700;
@@ -3925,6 +3931,17 @@ h6.h1 {
 }
 .border-forum {
   border-bottom: 1px solid rgba(113, 128, 150,0.1 );
+}
+.block-message{
+  padding: 25px;
+  background: #282c40;
+  border-radius: 3px;
+}
+.avatar-message{
+  width: 200px;
+}
+.content-message{
+  padding-left: 50px;
 }
 .bg-default {
   background: #5873fe;

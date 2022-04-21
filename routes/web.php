@@ -39,19 +39,33 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     // Les routes forum
     Route::group(['prefix' => 'forum'], function() {
 
-        Route::controller(PostController::class)->group(function () {
-            Route::get('/{forum}/create', 'create')->name('p.create');
-            Route::post('/{forum}/store', 'store')->name('p.store');
-            Route::get('/{forum}/{post}', 'show')->name('p.show');
-        });
-
-        Route::controller(MessageController::class)->group(function () {
-            Route::post('message/{post}/store', 'store')->name('m.store');
-        });
-
         Route::get('/', [CategorieController::class, 'index'])->name('forum.index');
-        
-        Route::get('/{forum}', [ForumController::class, 'show'])->name('f.show');
+
+        Route::controller(ForumController::class)->group(function () {
+            Route::get('/{forum}', 'show')->name('f.show');
+            Route::get('/create', 'create')->name('forum.create');
+            Route::post('/store', 'store')->name('forum.store');
+        });
+
+        Route::group(['prefix' => 'post'], function() {
+            Route::controller(PostController::class)->group(function () {
+                Route::get('/{post}', 'show')->name('p.show');
+                Route::get('/create/{forum}', 'create')->name('p.create');
+                Route::post('/store/{forum}', 'store')->name('p.store');
+                Route::get('/edit/{post}', 'edit')->name('post.edit');
+                Route::patch('/update/{post}', 'update')->name('post.update');
+                Route::get('/delete/{post}', 'destroy')->name('post.destroy');
+            });
+        });
+
+        Route::group(['prefix' => 'message'], function() {
+            Route::controller(MessageController::class)->group(function () {
+                Route::post('store/{post}', 'store')->name('m.store');
+                Route::get('edit/{message}', 'edit')->name('message.edit');
+                Route::get('delete/{message}', 'destroy')->name('message.destroy');
+                Route::patch('update/{message}', 'update')->name('message.update');
+            });
+        });
 
         /*
         Route::get('/{forum}/{post}', [PostController::class, 'show'])->name('p.show');
@@ -63,8 +77,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     
     Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function() {
         Route::view('/', 'admin')->name('admin');
-        Route::group(['middleware' => 'owner'], function() {
-            
+
+
+        Route::group(['prefix' => 'forum'], function() {
+            Route::controller(CategorieController::class)->group(function () {
+                Route::get('/', 'list')->name('forum.list');
+                Route::get('/create', 'create')->name('forum.create');
+                Route::post('/store', 'store')->name('forum.store');
+            });
         });
     });
 

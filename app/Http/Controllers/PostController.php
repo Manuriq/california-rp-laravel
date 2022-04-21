@@ -7,6 +7,7 @@ use App\Models\Forum;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -39,28 +40,21 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Post $post, Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'title' => 'required',
             'content' => ['required']
         ]);
 
-        Post::create([
+        $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
             'forum_id' => $forum->id,
             'compte_id' => Auth::User()->id
         ]);
 
-        $messages = Message::where('post_id', $post->id)
-        ->orderBy('created_at', 'ASC')
-        ->paginate(10);
-
-        return view('forum.post.show', [
-            'post' => $post,
-            'messages' => $messages
-        ]);
+        return redirect()->route('p.show', [$post]);
     }
 
     /**
@@ -69,7 +63,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Forum $forum, Post $post)
+    public function show(Post $post)
     {
         $messages = Message::where('post_id', $post->id)
             ->orderBy('created_at', 'ASC')
@@ -77,7 +71,6 @@ class PostController extends Controller
 
         return view('forum.post.show', [
             'post' => $post,
-            'forum' => $forum,
             'messages' => $messages
         ]);
     }
@@ -88,9 +81,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('forum.post.edit',
+        [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -100,9 +96,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'content' => ['required']
+        ]);
+
+        $post->update([
+          'content' => $request->content,
+        ]);
+        
+        Session::flash('message', 'Votre sujet a bien été edité.'); 
+        Session::flash('alert-class', 'alert-success'); 
+
+        return redirect()->route('p.show', [$post]);
     }
 
     /**
@@ -111,8 +118,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        Post::find($post->id)->delete();
+
+        Session::flash('message', 'Votre sujet a bien été supprimé.'); 
+        Session::flash('alert-class', 'alert-success'); 
+
+        return redirect()->route('f.show', [$post->forum->id]);
     }
 }

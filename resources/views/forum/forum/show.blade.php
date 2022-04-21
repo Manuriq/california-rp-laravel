@@ -30,7 +30,7 @@
                     <div class="card-body border-forum">
                         <div class="row align-items-center ml-4">
                             <div class="col-xl-5">
-                                <a href="{{ route('p.show', [$post->forum->id,$post->id]) }}" class="text-decoration-none"><h6 class="mb-0 font-weight-bold">{{ $post->title }}</h6></a>
+                                <a href="{{ route('p.show', [$post->id]) }}" class="text-decoration-none"><h6 class="mb-0 font-weight-bold">{{ $post->title }}</h6></a>
                             </div>
                             <div class="col-xl-2 text-center"><b>{{ $post->countMessage($post->id)+1 }}</b><br>Messages</div>
                             <div class="col-xl-1 text-center">
@@ -39,7 +39,7 @@
                                 </a>
                             </div>
                             <div class="col-xl-3 text-center text-white">
-                                <b>Sujet:</b> <a href="{{ route('p.show', [$post->forum->id,$post->id]) }}">{{ $post->title }}</a><br>
+                                <b>Sujet:</b> <a href="{{ route('p.show', [$post->id]) }}">{{ $post->title }}</a><br>
                                 <b>Par:</b> <a href="{{ route('profile.show', $post->compte->id) }}">{{ $post->compte->cNom }}</a><br>
                                 <b>Posté le:</b> {{ $post->created_at->translatedFormat('j F Y à h\hi') }}
                             </div>

@@ -35,11 +35,6 @@ class Compte extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function isAdmin()
-    {
-        return $this->cAdmin >= 5;
-    }
-
     public function countPost($id)
     {
         return Post::where('compte_id', $id)

@@ -12,7 +12,7 @@ class CreateComptesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {    
         Schema::create('comptes', function (Blueprint $table) {
             $table->id();
             $table->string('cNom', 24);
@@ -47,6 +47,11 @@ class CreateComptesTable extends Migration
             $table->integer('cLastActivity')->default(0);
             $table->string('cAvatarUrl')->default("avatars/default.png");
             $table->string('roles')->nullable();
+
+            // $table->dropColumn(['votes', 'avatar', 'location']); 
+            // $table->renameColumn('from', 'to');
+            // $table->string('name', 50)->nullable()->change();
+
         });
     }
 

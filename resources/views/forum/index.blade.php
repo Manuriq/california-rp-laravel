@@ -36,7 +36,7 @@
                                 </a>
                             </div>
                             <div class="col-xl-3 text-center text-white">               
-                                    <b>Sujet:</b> <a href="{{ route('p.show', [$forum->id, $forum->getLastPost($forum->id)]) }}">{{ $forum->getLastPost($forum->id)->title }}</a> <br>
+                                    <b>Sujet:</b> <a href="{{ route('p.show', [$forum->getLastPost($forum->id)]) }}">{{ $forum->getLastPost($forum->id)->title }}</a> <br>
                                     <b>Par:</b> <a href="{{ route('profile.show', $forum->getLastPost($forum->id)->compte->id) }}">{{ $forum->getLastPost($forum->id)->compte->cNom }}</a><br>
                                     <b>Posté le:</b> {{ $forum->getLastPost($forum->id)->created_at->translatedFormat('j F Y à h\hi') }}   
                             </div>

@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class MessageController extends Controller
 {
@@ -41,14 +42,12 @@ class MessageController extends Controller
             'content' => ['required']
         ]);
 
-        $message = Message::create([
+        Message::create([
             'content' => $request->content,
             'post_id' => $post->id,
             'compte_id' => Auth::User()->id
         ]);
-        return view('forum.post.show', [
-            'post' => $post,
-        ]);
+        return redirect()->back();
     }
 
     /**
@@ -70,19 +69,33 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        //
+        return view('forum.message.edit',
+        [
+            'message' => $message
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Post  $post
      * @param  \App\Models\Message  $message
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(Message $message, Request $request)
     {
-        //
+        $request->validate([
+            'content' => ['required']
+        ]);
+
+        $message->update([
+          'content' => $request->content,
+        ]);
+        
+        Session::flash('message', 'Votre message a bien été edité.'); 
+        Session::flash('alert-class', 'alert-success'); 
+
+        return redirect()->route('p.show', [$message->post->id]);
     }
 
     /**
@@ -93,6 +106,11 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        Message::find($message->id)->delete();
+
+        Session::flash('message', 'Votre message a bien été supprimé.'); 
+        Session::flash('alert-class', 'alert-success'); 
+
+        return redirect()->back();
     }
 }

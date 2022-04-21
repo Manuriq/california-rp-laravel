@@ -13,6 +13,14 @@ class Forum extends Model
 
     protected $guarded = ['id'];
 
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function(Forum $forum) {
+            $forum->posts()->delete();
+        });
+    }
+
     public function categorie()
     {
         return $this->hasOne(Categorie::class);

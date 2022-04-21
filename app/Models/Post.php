@@ -14,6 +14,14 @@ class Post extends Model
 
     protected $guarded = ['id'];
 
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function(Post $post) {
+            $post->messages()->delete();
+        });
+    }
+
     public function compte()
     {
         return $this->belongsTo(Compte::class);
