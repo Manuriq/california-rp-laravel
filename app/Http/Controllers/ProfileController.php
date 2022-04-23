@@ -105,12 +105,12 @@ class ProfileController extends Controller
 
     public function validateip()
     {
-        /*$ip = $_SERVER['HTTP_CLIENT_IP'] 
+        $ip = $_SERVER['HTTP_CLIENT_IP'] 
             ? $_SERVER['HTTP_CLIENT_IP'] 
             : ($_SERVER['HTTP_X_FORWARDED_FOR'] 
                 ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
-                : $_SERVER['REMOTE_ADDR']);*/
-        $ip = $_SERVER["HTTP_CF_CONNECTING_IP"];
+                : $_SERVER['REMOTE_ADDR']);
+        //$ip = $_SERVER["HTTP_CF_CONNECTING_IP"];
 
         Auth()->user()->update([
             'cIp'=>$ip,
