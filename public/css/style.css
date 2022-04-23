@@ -884,6 +884,9 @@ a.dt-button.active:not(.disabled) {
 .dropdown-profile li:last-child {
   padding: 7px 15px;
 }
+.table-dark td, .table-dark th, .table-dark thead th {
+  border-color: #32383e;
+}
 .header-link {
   position: relative;
   top: -3px;

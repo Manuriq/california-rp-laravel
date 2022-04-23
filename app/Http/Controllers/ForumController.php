@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Forum;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -30,7 +31,10 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('forum.create');
+        return view('forum.forum.create', [
+            'categories' => Categorie::orderBy('order', 'ASC')
+                        ->get()
+        ]);
     }
 
     /**
@@ -44,18 +48,27 @@ class ForumController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:25'],
             'desc' => ['string', 'max:150'],
-            'order' => ['integer', 'required', 'min:1']
+            'order' => ['integer', 'required', 'min:1'],
+            'categorie' => ['integer', 'required', 'min:1'],
+            'state' => ['integer', 'required', 'min:0', 'max:1']
         ]);
+
+        $categorie = Categorie::findOrFail($request->categorie);
+
         $forum = Forum::create([
             'title' => $request->title,
             'desc' => $request->desc,
             'order' => $request->order,
-            'state' => $request->state
+            'categorie_id' => $categorie->id
         ]);
         
         $forum->save();
-        Session::flash('message', 'Ajout d\'un nouveau forum avec succes !'); 
-        return view('forum.index');
+
+        Session::flash('title', 'Félicitation !');
+        Session::flash('message', 'Ajout d\'un nouveau forum avec succes !');
+        Session::flash('alert-class', 'success');
+        
+        return redirect()->route('forum.index');
     }
 
     /**
@@ -85,7 +98,11 @@ class ForumController extends Controller
      */
     public function edit(Forum $forum)
     {
-        //
+        $categories = Categorie::orderBy('order', 'ASC')->get();
+        return view('forum.forum.edit', [
+            'forum' => $forum,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -97,7 +114,29 @@ class ForumController extends Controller
      */
     public function update(Request $request, Forum $forum)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'string', 'max:25'],
+            'desc' => ['string', 'max:150'],
+            'order' => ['integer', 'required', 'min:1'],
+            'categorie' => ['integer', 'required', 'min:1'],
+            'state' => ['integer', 'required', 'min:0', 'max:1']
+        ]);
+
+        $categorie = Categorie::findOrFail($request->categorie);
+
+        $forum->update([
+          'title' => $request->title,
+          'desc' => $request->desc,
+          'order' => $request->order,
+          'categorie' => $request->categorie,
+          'state' => $request->state,
+        ]);
+        
+        Session::flash('title', 'Félicitation !'); 
+        Session::flash('message', 'Votre Fotum a bien été edité.'); 
+        Session::flash('alert-class', 'success');
+
+        return redirect()->back();
     }
 
     /**
@@ -108,6 +147,12 @@ class ForumController extends Controller
      */
     public function destroy(Forum $forum)
     {
-        //
+        Forum::find($forum->id)->delete();
+
+        Session::flash('title', 'Félicitation !'); 
+        Session::flash('message', 'Votre forum a bien été supprimé.'); 
+        Session::flash('alert-class', 'success'); 
+
+        return redirect()->back();
     }
 }

@@ -12,7 +12,7 @@
                     <li class="breadcrumb-item">Gestion des Forums</li>
                 </ol>
             </div>
-            <a class="btn btn-default" href="" role="button">Ajouter un Forum</a>
+            <a class="btn btn-default" href="{{ route('forum.create') }}" role="button">Ajouter un Forum</a>
             <div class="card">
                 <div class="card-title">
                     <h4>Liste des Forums </h4>        
@@ -24,24 +24,26 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Titre</th>
+                                    <th scope="col">Catégorie</th>
                                     <th scope="col">Ordre</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($forums as $forum)      
+                                @foreach ($forums as $k => $forum)      
                                 <tr class="text-align-center">
-                                    <th scope="row"></th>
-                                    <td>{{ $forum->title }}</td>
+                                    <td>{{ $k+1 }}</td>
+                                    <td><a href="{{ route('f.show', $forum->id) }}">{{ $forum->title }}</a></td>
+                                    <td><a href="{{ route('categorie.index') }}">{{ $forum->categorie->title }}</a></td>
                                     <td><span class="badge badge-default">{{ $forum->order }}</span></td>
                                     @if ($forum->state == 0)
                                         <td><span class="badge badge-primary">Ouvert</td>
                                     @else
                                         <td><span class="badge badge-danger">Fermé</td>
                                     @endif
-                                    <td><a class="btn btn-default" href="{{ route('p.create', $forum->id) }}" role="button">Editer</a>
-                                    <a class="btn btn-default" href="{{ route('p.create', $forum->id) }}" role="button">Supprimer</a></td>
+                                    <td><a class="btn btn-default" href="{{ route('forum.edit', $forum->id) }}" role="button">Editer</a>
+                                    <a class="btn btn-default" href="{{ route('forum.delete', $forum->id) }}" role="button">Supprimer</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

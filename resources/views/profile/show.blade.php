@@ -86,7 +86,7 @@
                                 <div class="row align-items-center justify-content-between">
                                     <div class="col-10">
                                         <h6 class="m-0 text-white">
-                                            <a href="{{ route('p.show', [$post->forum->id, $post->id]) }}"> {{ $post->title }}</a>
+                                            <a href="{{ route('p.show', [$post->id]) }}"> {{ $post->title }}</a>
                                         </h6>
                                     </div>
                                     <div class="col-2 text-center">
@@ -120,7 +120,7 @@
                                 <div class="row align-items-center justify-content-between">
                                     <div class="col-10">
                                         <h6 class="m-0 text-white">
-                                            Réponse: <a href="{{ route('p.show', [$message->post->forum->id, $message->post->id]) }}"> {{ $message->post->title }}</a>
+                                            Réponse: <a href="{{ route('p.show', [$message->post->id]) }}"> {{ $message->post->title }}</a>
                                         </h6>
                                     </div>
                                     <div class="col-2 text-center">

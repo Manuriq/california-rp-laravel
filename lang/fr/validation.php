@@ -85,7 +85,7 @@ return [
     'max' => [
         'array' => 'The :attribute must not have more than :max items.',
         'file' => 'The :attribute must not be greater than :max kilobytes.',
-        'numeric' => 'The :attribute must not be greater than :max.',
+        'numeric' => 'Le champ :attribute ne peut pas être supérieur à :max.',
         'string' => 'Le champ :attribute ne peut dépasser :max caractères.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
@@ -93,7 +93,7 @@ return [
     'min' => [
         'array' => 'The :attribute must have at least :min items.',
         'file' => 'The :attribute must be at least :min kilobytes.',
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => 'Le champ :attribute ne peut pas être inférieur à :min.',
         'string' => 'Le champ :attribute doit au moins faire :min caractères.',
     ],
     'multiple_of' => 'The :attribute must be a multiple of :value.',
@@ -162,7 +162,12 @@ return [
         'cNom' => '"Pseudo"',
         'cEmail' => '"Email"',
         'password' => '"Mot de Passe"',
-        'repeat_password' => '"Répétez le Mot de Passe"'
+        'repeat_password' => '"Répétez le Mot de Passe"',
+        'state' => 'Statut',
+        'categorie' => 'Categorie',
+        'order' => 'Ordre',
+        'desc' => 'Description',
+        'title' => 'Titre',
     ],
 
 ];

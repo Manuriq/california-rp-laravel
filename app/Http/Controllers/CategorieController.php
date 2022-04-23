@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Forum;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,13 @@ class CategorieController extends Controller
      */
     public function index()
     {
+        $categories = Categorie::orderBy('order', 'ASC')->get();
+
+        $forums = Forum::orderBy('order', 'ASC')->get();
+
         return view('forum.categorie.index', [
-            'categories' => Categorie::orderBy('order', 'ASC')
-            ->get()
+            'categories' => $categories,
+            'forums' => $forums
         ]);
     }
 

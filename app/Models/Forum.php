@@ -17,13 +17,18 @@ class Forum extends Model
         parent::boot();
 
         static::deleting(function(Forum $forum) {
-            $forum->posts()->delete();
+            $posts = Post::where('forum_id', $forum->id)->get();
+
+            foreach ($posts as $post) {
+                Message::where('post_id', $post->id)->delete();
+                $post->delete();
+            }
         });
     }
 
     public function categorie()
     {
-        return $this->hasOne(Categorie::class);
+        return $this->belongsTo(Categorie::class);
     }
 
     public function posts()

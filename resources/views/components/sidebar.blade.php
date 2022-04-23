@@ -15,7 +15,7 @@
                 @if (Auth::User()->cAdmin > 1)
                     <li class="label">Administration</li>
                     <li><a href="#"><i class="fa-solid fa-user-gear"></i> Gestion Utilisateurs</a></li>
-                    <li><a href="{{ route('forum.index') }}"><i class="fa-solid fa-user-gear"></i> Gestion Forum</a></li>
+                    <li><a href="{{ route('forum.index') }}"><i class="fa-solid fa-gears"></i> Gestion Forum</a></li>
                 @endif
             </ul>
         </div>
