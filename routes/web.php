@@ -21,7 +21,7 @@ use App\Http\Controllers\CategorieController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     
@@ -77,8 +77,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
         Route::view('/', 'admin')->name('admin');
 
 
-        Route::group(['prefix' => 'forum'], function() {
-            
+        Route::group(['prefix' => 'forum'], function() {      
             Route::controller(ForumController::class)->group(function () {
                 Route::get('/', 'index')->name('forum.index');
                 Route::get('/delete/{forum}', 'destroy')->name('forum.delete');
@@ -86,6 +85,17 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
                 Route::post('/update/{forum}', 'update')->name('forum.update');
                 Route::get('/create', 'create')->name('forum.create');
                 Route::post('/store', 'store')->name('forum.store');
+            });
+        });
+
+        Route::group(['prefix' => 'categorie'], function() {      
+            Route::controller(CategorieController::class)->group(function () {
+                Route::get('/', 'list')->name('categorie.list');
+                Route::get('/delete/{categorie}', 'destroy')->name('categorie.delete');
+                Route::get('/edit/{categorie}', 'edit')->name('categorie.edit');
+                Route::post('/update/{categorie}', 'update')->name('categorie.update');
+                Route::get('/create', 'create')->name('categorie.create');
+                Route::post('/store', 'store')->name('categorie.store');
             });
         });
     });

@@ -9,26 +9,14 @@
               <div class="col-lg-8 p-r-0 title-margin-right">
                   <div class="page-header">
                       <div class="page-title">
-                          <h1>Hello, <span>Welcome Here</span></h1>
+                          <h1>Salut, <span>{{ Auth::User()->cNom }}</span></h1>
                       </div>
                   </div>
               </div>
-              <!-- /# column -->
-              <div class="col-lg-4 p-l-0 title-margin-left">
-                  <div class="page-header">
-                      <div class="page-title">
-                          <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                              <li class="breadcrumb-item active">Home</li>
-                          </ol>
-                      </div>
-                  </div>
-              </div>
-              <!-- /# column -->
           </div>
           <!-- /# row -->
           <section id="main-content">
-              
+            Le site est encore en développement, n'hésitez pas à report les bugs
           </section>
       </div>
   </div>
