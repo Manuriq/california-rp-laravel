@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('post_id');
-            $table->unsignedInteger('compte_id');
-            $table->foreign('post_id')->references('id')->on('post')->onDelete('cascade');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('compte_id');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('compte_id')->references('id')->on('comptes')->onDelete('cascade');;
             $table->text("content");
             $table->boolean('state')->nullable()->default(false);

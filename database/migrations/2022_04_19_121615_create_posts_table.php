@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('forum_id');
-            $table->unsignedInteger('compte_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('forum_id');
+            $table->unsignedBigInteger('compte_id');
             $table->foreign('forum_id')->references('id')->on('forums')->onDelete('cascade');
             $table->foreign('compte_id')->references('id')->on('comptes')->onDelete('cascade');
             $table->string("title");
