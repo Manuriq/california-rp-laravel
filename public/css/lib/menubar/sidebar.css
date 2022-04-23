@@ -205,7 +205,7 @@ body {
 /* Hide to Small bar */
 
 .sidebar-hide .sidebar.sidebar-hide-to-small {
-    position: absolute;
+    /*position: absolute;*/
     width: 60px;
     left: 0;
     top: 0px;

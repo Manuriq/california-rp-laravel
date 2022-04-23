@@ -89,7 +89,17 @@ class ProfileController extends Controller
         if($request->hasFile('cAvatar')){
             $path = $request->cAvatar->store('avatars');
             Auth()->user()->update(['cAvatarUrl'=>$path]);
+
+            Session::flash('title', 'Félicitation !'); 
+            Session::flash('message', 'Votre avatar a bien été modifié.'); 
+            Session::flash('alert-class', 'success'); 
+            
+        }else{
+            Session::flash('title', 'Erreur !'); 
+            Session::flash('message', 'Vous devez d\'abord sélectionner une image en cliquant sur votre avatar.'); 
+            Session::flash('alert-class', 'error'); 
         }
+
         return redirect()->back();
     }
 
@@ -102,8 +112,9 @@ class ProfileController extends Controller
             'cIpUpdated' => 1
         ]);
 
+        Session::flash('title', 'Félicitation !'); 
         Session::flash('message', 'Votre IP a bien été validée ! Veuillez patienter avant de vous connecter cela peut prendre 5 minutes maximum.'); 
-        Session::flash('alert-class', 'alert-success');      
+        Session::flash('alert-class', 'success');      
 
         return redirect()->back();
     }
