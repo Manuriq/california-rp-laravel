@@ -20,6 +20,7 @@
     <link href="{{ @asset('css/lib/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ @asset('css/lib/helper.css') }}" rel="stylesheet">
     <link href="{{ @asset('css/style.css') }}" rel="stylesheet">
+	<link href="{{ @asset('css/lib/toastr/toastr.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -65,12 +66,24 @@
 	<!-- scripit init-->
 	<script src="{{ @asset('js/dashboard2.js') }}"></script>
 
+	<script src="{{ @asset('js/lib/toastr/toastr.min.js') }}"></script>
+	<script src="{{ @asset('js/lib/toastr/toastr.init.js') }}"></script>
 	
 	<script src="{{ @asset('ckeditor/ckeditor.js') }}"></script>
 	<script src="https://kit.fontawesome.com/e8688b67db.js" crossorigin="anonymous"></script>
 	<script>
 		CKEDITOR.replace( 'editor' );
 	</script>
+
+	@if(Session::has('message'))
+		<div id="toast-container" class="toast-bottom-right">
+			<div class="toast toast-{{ Session::get('alert-class', '-info') }}" aria-live="polite" style="display: block;">
+				<button id="close-btn" type="button" class="toast-close-button" role="button" onclick='$(this).parent().hide();'>×</button>
+				<div class="toast-title">{{ Session::get('title', 'Information !') }}</div>
+				<div class="toast-message">{{ Session::get('message') }}</div>
+			</div>
+		</div>
+	@endif
 </body>
 
 </html>

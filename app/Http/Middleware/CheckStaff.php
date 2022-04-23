@@ -19,8 +19,9 @@ class CheckStaff
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->cAdmin < 1){
+            Session::flash('title', 'Erreur !'); 
             Session::flash("message", "Vous n'avez pas l'autorisation d'accéder à cette page."); 
-            Session::flash('alert-class', 'alert-danger'); 
+            Session::flash('alert-class', 'error'); 
             return redirect()->route('dashboard');
         }
         return $next($request);

@@ -99,10 +99,3 @@
         </div>
     </div>
 </div>
-@if(Session::has('message'))
-<div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show mb-" role="alert">
-    <center>
-    <strong>{{ Session::get('message') }}</strong>
-    </center>
-</div>
-@endif

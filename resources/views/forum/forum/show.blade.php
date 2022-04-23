@@ -15,7 +15,9 @@
             </div>
             <div class="mb-3">
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-default" href="{{ route('p.create', $forum->id) }}" role="button">Créer un Sujet</a>
+                    @if ($forum->state === 0)
+                        <a class="btn btn-default" href="{{ route('p.create', $forum->id) }}" role="button">Créer un Sujet</a>
+                    @endif      
                     {{ $posts->links() }}
                 </div>
             </div>

@@ -16,6 +16,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
+
     public function index()
     {
         //
@@ -28,6 +34,9 @@ class PostController extends Controller
      */
     public function create(Forum $forum)
     {
+        if($forum->state == 1){
+            return redirect()->back();
+        }
 
         return view('forum.post.create', [
             'forum' => $forum
@@ -42,6 +51,15 @@ class PostController extends Controller
      */
     public function store(Forum $forum, Request $request)
     {
+        if($forum->state == 1){
+            
+            Session::flash('title', 'Erreur !'); 
+            Session::flash('message', 'Le forum est fermé, vous ne pouvez pas créer de nouveau sujet.'); 
+            Session::flash('alert-class', 'error'); 
+
+            return redirect()->route('f.show', [$forum]);
+        }
+
         $request->validate([
             'title' => 'required',
             'content' => ['required']
@@ -106,8 +124,9 @@ class PostController extends Controller
           'content' => $request->content,
         ]);
         
+        Session::flash('title', 'Félicitation !'); 
         Session::flash('message', 'Votre sujet a bien été edité.'); 
-        Session::flash('alert-class', 'alert-success'); 
+        Session::flash('alert-class', 'success');
 
         return redirect()->route('p.show', [$post]);
     }
@@ -122,8 +141,9 @@ class PostController extends Controller
     {
         Post::find($post->id)->delete();
 
+        Session::flash('title', 'Félicitation !'); 
         Session::flash('message', 'Votre sujet a bien été supprimé.'); 
-        Session::flash('alert-class', 'alert-success'); 
+        Session::flash('alert-class', 'success'); 
 
         return redirect()->route('f.show', [$post->forum->id]);
     }

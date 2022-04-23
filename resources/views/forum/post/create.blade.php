@@ -10,6 +10,7 @@
             <div class="page-title mt-4">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('categorie.index') }}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('f.show', $forum->id) }}">{{ $forum->title }}</a></li>
                     <li class="breadcrumb-item">Création d'un Sujet</li>
                 </ol>
             </div>

@@ -15,6 +15,12 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->authorizeResource(Message::class, 'message');
+    }
+
     public function index()
     {
         //
@@ -92,8 +98,9 @@ class MessageController extends Controller
           'content' => $request->content,
         ]);
         
+        Session::flash('title', 'Félicitation !'); 
         Session::flash('message', 'Votre message a bien été edité.'); 
-        Session::flash('alert-class', 'alert-success'); 
+        Session::flash('alert-class', 'success'); 
 
         return redirect()->route('p.show', [$message->post->id]);
     }
@@ -108,8 +115,9 @@ class MessageController extends Controller
     {
         Message::find($message->id)->delete();
 
+        Session::flash('title', 'Félicitation !'); 
         Session::flash('message', 'Votre message a bien été supprimé.'); 
-        Session::flash('alert-class', 'alert-success'); 
+        Session::flash('alert-class', 'success'); 
 
         return redirect()->back();
     }

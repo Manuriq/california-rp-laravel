@@ -4,8 +4,8 @@
 // 1. All Success Message
 //...................................................
 
-$('#toastr-success-top-right').on("click", function() {
-    toastr.success('This Is Success Message','Top Right',{
+$('#close-btn').on('click', function() {
+    toastr.success('This Is Success LOL','Top Right',{
         timeOut: 5000,
         "closeButton": true,
         "debug": false,

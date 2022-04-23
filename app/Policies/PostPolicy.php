@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\Compte;
-use App\Models\Message;
+use App\Models\Post;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class MessagePolicy
+class PostPolicy
 {
     use HandlesAuthorization;
 
@@ -39,12 +39,12 @@ class MessagePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\Compte  $compte
-     * @param  \App\Models\Message  $message
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Compte $compte, Message $message)
+    public function view(Compte $compte, Post $post)
     {
-        //
+        return true;
     }
 
     /**
@@ -62,34 +62,34 @@ class MessagePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\Compte  $compte
-     * @param  \App\Models\Message  $message
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Compte $compte, Message $message)
+    public function update(Compte $compte, Post $post)
     {
-        return $message->compte->id === $compte->id;
+        return $post->compte->id === $compte->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\Compte  $compte
-     * @param  \App\Models\Message  $message
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(Compte $compte, Message $message)
+    public function delete(Compte $compte, Post $post)
     {
-        return $message->compte->id === $compte->id;
+        return $post->compte->id === $compte->id;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\Compte  $compte
-     * @param  \App\Models\Message  $message
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(Compte $compte, Message $message)
+    public function restore(Compte $compte, Post $post)
     {
         //
     }
@@ -98,10 +98,10 @@ class MessagePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\Compte  $compte
-     * @param  \App\Models\Message  $message
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(Compte $compte, Message $message)
+    public function forceDelete(Compte $compte, Post $post)
     {
         //
     }
