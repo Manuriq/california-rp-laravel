@@ -59,6 +59,7 @@ class ForumController extends Controller
             'title' => $request->title,
             'desc' => $request->desc,
             'order' => $request->order,
+            'state' => $request->state,
             'categorie_id' => $categorie->id
         ]);
         
