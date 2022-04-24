@@ -58,7 +58,7 @@
                 <span class="text-gray-700 dark:text-gray-400">Mot de passe</span>
                 <input
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="***************"
+                  placeholder="Mot de passe"
                   type="password"
                   name="password"
                 />
@@ -67,7 +67,7 @@
                 <span class="text-gray-700 dark:text-gray-400">Répétez le Mot de passe</span>
                 <input
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="***************"
+                  placeholder="Répétez le Mot de passe"
                   type="password"
                   name="repeat_password"
                 />
