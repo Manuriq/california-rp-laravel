@@ -129,7 +129,7 @@ class ProfileController extends Controller
             $ipaddress = 'UNKNOWN'; 
             
          
-        dd($ip);  
+        dd($ipaddress);  
 
         $ip = $_SERVER["HTTP_CF_CONNECTING_IP"];
 
