@@ -70,7 +70,7 @@
                       </div>
                       @endif
                   </div>
-                  <div class="col-lg-8">
+                  <div class="col-lg-9">
                     <div class="user-profile-name">{{ $compte->cNom }}</div>
                     <div class="user-job-title">{{ $compte->roleName() }}</div>
                     <div class="custom-tab user-profile-tab">

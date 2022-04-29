@@ -2938,7 +2938,6 @@ tbody tr td {
   display: inline-block;
   font-size: 22px;
   font-weight: 500;
-  padding: 0px 15px;
 }
 .user-Location {
   display: inline-block;
@@ -2952,7 +2951,6 @@ tbody tr td {
 .user-job-title {
   font-size: 14px;
   padding-bottom: 5px;
-  padding-left: 15px;
   color: #5873fe;
 }
 .ratings h4 {
@@ -2975,7 +2973,6 @@ tbody tr td {
 }
 .user-profile-tab {
   margin-top: 15px;
-  padding: 0px 15px;
 }
 .user-profile-tab li a {
   padding: 7px 40px 7px 0px;
