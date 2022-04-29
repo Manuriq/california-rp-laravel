@@ -92,6 +92,8 @@ class ProfileController extends Controller
             //$path = $request->cAvatar->store('avatars');
             Auth()->user()->update(['cAvatarUrl'=>$path]);
 
+            dd($path);
+
             Session::flash('title', 'Félicitation !'); 
             Session::flash('message', 'Votre avatar a bien été modifié.'); 
             Session::flash('alert-class', 'success'); 
