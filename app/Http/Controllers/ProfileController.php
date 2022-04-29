@@ -88,8 +88,7 @@ class ProfileController extends Controller
     public function update(Request $request, Compte $compte)
     {
         if($request->hasFile('cAvatar')){
-            $path = Storage::putFile('storage/avatars', $request->file('cAvatar'));
-            //$path = $request->cAvatar->store('avatars');
+            $path = $request->cAvatar->store('avatars');
             Auth()->user()->update(['cAvatarUrl'=>$path]);
 
             dd($path);
