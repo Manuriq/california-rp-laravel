@@ -175,7 +175,7 @@
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <a href="/games/sa-mp-0.3.DL-R1-install.exe" class="flex flex-wrap no-underline hover:no-underline">
               <p class="w-full text-gray-600 text-xs md:text-sm px-6">
                 Etape n°2
               </p>
