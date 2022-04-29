@@ -16,7 +16,7 @@
             </div>
             <div class="mb-2 block-message">
                 <div class="row">
-                    <div class="avatar-message d-flex flex-column align-items-center">
+                    <div class="col-lg-2 col-sm-12 avatar-message d-flex flex-lg-column align-items-center">
                         <span class="text-uppercase"><a class="" href="{{ route('profile.show', $post->compte->id) }}">{{ $post->compte->cNom }}</a></span>
                         <div class="user-job-title">{{ $post->compte->roleName() }}</div>
                         <a class="" href="{{ route('profile.show', $post->compte->id) }}">
@@ -26,7 +26,7 @@
                         <span class="badge bg-default mb-2">Sujets: {{ $post->compte->countPost($post->compte->id) }}</span>
                         <span class="badge bg-default mb-2">Messages: {{ $post->compte->countMessage($post->compte->id) }}</span>
                     </div>
-                    <div class="content-message">
+                    <div class="col-lg-10 content-message">
                         <small>{{ $post->created_at->translatedFormat('j F Y à h\hi') }}</small>
                         <div class="p-4">
                             {!! $post->content !!}
