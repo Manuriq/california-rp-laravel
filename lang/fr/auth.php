@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Les identifiants que vous avez tapez sont incorrect.',
+    'failed' => 'Les identifiants que vous avez tapé sont incorrect.',
     'password' => 'Le mot de passe fourni est incorrect.',
     'throttle' => 'Trop de tentatives de connexion. Veuillez réessayer dans :seconds secondes.',
 
