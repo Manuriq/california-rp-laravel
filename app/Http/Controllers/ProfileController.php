@@ -88,6 +88,7 @@ class ProfileController extends Controller
     {
         if($request->hasFile('cAvatar')){
             $path = $request->cAvatar->store('avatars');
+            dd($path);
             Auth()->user()->update(['cAvatarUrl'=>$path]);
 
             Session::flash('title', 'Félicitation !'); 
