@@ -7,6 +7,7 @@ use App\Models\Compte;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -87,7 +88,8 @@ class ProfileController extends Controller
     public function update(Request $request, Compte $compte)
     {
         if($request->hasFile('cAvatar')){
-            $path = $request->cAvatar->store('avatars');
+            $path = Storage::putFile('avatars', $request->file('cAvatar'));
+            //$path = $request->cAvatar->store('avatars');
             Auth()->user()->update(['cAvatarUrl'=>$path]);
 
             Session::flash('title', 'Félicitation !'); 
