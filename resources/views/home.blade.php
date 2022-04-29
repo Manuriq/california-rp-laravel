@@ -78,7 +78,7 @@
             San Fierro RolePlay est serveur GTA San Andreas MultiPlayer basé sur la ville de San Fierro! Retrouvez un script inédit développé de A à Z et pensé
             pour la communauté !
           </p>
-          <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+          <button class="mx-auto mb-20 lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
             <a href="{{ route('register') }}">Rejoignez-nous !</a> 
           </button>
         </div>
