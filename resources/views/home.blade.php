@@ -7,7 +7,7 @@
     <title>
       San Fierro RolePlay - SA:MP GTA
     </title>
-    <meta name="description" content="Simple landind page" />
+    <meta name="description" content="San Fierro RolePlay est un serveur GTA SA:MP avec un script de A à Z." />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
     <link rel="icon" type="image/x-icon" href="{{ @asset('img/sfrp_favico.png') }}">
