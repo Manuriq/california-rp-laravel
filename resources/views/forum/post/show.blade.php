@@ -18,6 +18,7 @@
                 <div class="row">
                     <div class="avatar-message d-flex flex-column align-items-center">
                         <span class="text-uppercase"><a class="" href="{{ route('profile.show', $post->compte->id) }}">{{ $post->compte->cNom }}</a></span>
+                        <div class="user-job-title">{{ $compte->roleName() }}</div>
                         <a class="" href="{{ route('profile.show', $post->compte->id) }}">
                             <img class="rounded-circle avatar-img-message" src="{{ asset('storage/' . $post->compte->cAvatarUrl) }}">
                         </a>
@@ -47,6 +48,7 @@
                 <div class="row">
                     <div class="avatar-message d-flex flex-column align-items-center">
                         <span class="text-uppercase"><a class="" href="{{ route('profile.show', $message->compte->id) }}">{{ $message->compte->cNom }}</a></span>
+                        <div class="user-job-title">{{ $compte->roleName() }}</div>
                         <a class="" href="{{ route('profile.show', $message->compte->id) }}">
                             <img class="rounded-circle avatar-img-message" src="{{ asset('storage/' . $message->compte->cAvatarUrl) }}">
                         </a>
