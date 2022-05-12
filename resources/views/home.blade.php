@@ -190,14 +190,14 @@
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
               <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                <a href="">Télécharger San Andreas MultiPlayer 0.3DL</a>
+                <a href="{{ @asset('games/sa-mp-0.3.DL-R1-install.exe') }}">Télécharger San Andreas MultiPlayer 0.3DL</a>
               </button>
             </div>
           </div>
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <a href="{{ @asset('games/Launcher.rar') }}" class="flex flex-wrap no-underline hover:no-underline">
               <p class="w-full text-gray-600 text-xs md:text-sm px-6">
                 Etape n°3
               </p>
@@ -212,7 +212,7 @@
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
               <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                <a href="">Télécharger le Launcher San Fierro RolePlay</a>
+                <a href="{{ @asset('games/Launcher.rar') }}">Télécharger le Launcher San Fierro RolePlay</a>
               </button>
             </div>
           </div>

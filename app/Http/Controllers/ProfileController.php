@@ -87,7 +87,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Compte $compte)
     {
-        if($request->hasFile('cAvatar')){
+        /*if($request->hasFile('cAvatar')){
             $path = $request->cAvatar->store('avatars');
             Auth()->user()->update(['cAvatarUrl'=>$path]);
 
@@ -101,7 +101,7 @@ class ProfileController extends Controller
             Session::flash('alert-class', 'error'); 
         }
 
-        return redirect()->back();
+        return redirect()->back();*/
     }
 
     public function validateip()
