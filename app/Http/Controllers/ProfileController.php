@@ -87,7 +87,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Compte $compte)
     {
-        /*if($request->hasFile('cAvatar')){
+        if($request->hasFile('cAvatar')){
             $path = $request->cAvatar->store('avatars');
             Auth()->user()->update(['cAvatarUrl'=>$path]);
 
@@ -101,7 +101,7 @@ class ProfileController extends Controller
             Session::flash('alert-class', 'error'); 
         }
 
-        return redirect()->back();*/
+        return redirect()->back();
     }
 
     public function validateip()
@@ -110,7 +110,7 @@ class ProfileController extends Controller
             ? $_SERVER['HTTP_CLIENT_IP'] 
             : ($_SERVER['HTTP_X_FORWARDED_FOR'] 
                 ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
-                : $_SERVER['REMOTE_ADDR']);*/
+                : $_SERVER['REMOTE_ADDR']);
  
             if (isset($_SERVER['HTTP_CLIENT_IP']))
             $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
@@ -141,7 +141,7 @@ class ProfileController extends Controller
 
         Session::flash('title', 'Félicitation !'); 
         Session::flash('message', 'Votre IP a bien été validée ! Veuillez patienter avant de vous connecter cela peut prendre 5 minutes maximum.'); 
-        Session::flash('alert-class', 'success');      
+        Session::flash('alert-class', 'success'); */     
 
         return redirect()->back();
     }
