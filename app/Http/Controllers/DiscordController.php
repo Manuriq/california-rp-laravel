@@ -29,6 +29,7 @@ class DiscordController extends Controller
         $user = Socialite::driver('discord')->user();
 
         $compte = Compte::query()->where('discord_id', 'LIKE','%'.$user->id.'%');
+        dd($compte);
         if($compte->id != Auth()->user()->id){
 
             Session::flash('title', 'Errur !'); 
