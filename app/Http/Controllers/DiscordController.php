@@ -32,9 +32,9 @@ class DiscordController extends Controller
         //$compte = DB::table('comptes')->where('discord_id', $user->id)->first();
         $compte = Compte::where('discord_id', $user->id)->first();
 
-        if($compte->id != null && $compte->id != Auth()->user()->id){
+        if($compte != null && $compte->id != Auth()->user()->id){
 
-            Session::flash('title', 'Errur !'); 
+            Session::flash('title', 'Erreur !'); 
             Session::flash('message', 'Ce compte discord est déjà lié à un compte SFRP.'); 
             Session::flash('alert-class', 'error');
 
