@@ -8,6 +8,7 @@ use App\Http\Controllers\CompteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     
-    Route::view('/', 'panel.index')->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // Les routes Profile
     Route::group(['prefix' => 'profile'], function() {
