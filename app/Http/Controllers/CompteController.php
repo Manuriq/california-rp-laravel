@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Compte;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CompteController extends Controller
 {
@@ -94,7 +95,19 @@ class CompteController extends Controller
      */
     public function update(Request $request, Compte $compte)
     {
-        //
+        $request->validate([
+            'whitelisted' => ['required']
+        ]);
+
+        $compte->update([
+            'whitelisted' => $request->whitelisted,
+          ]);
+
+        Session::flash('title', 'Félicitation !');
+        Session::flash('message', 'Vous venez d\'éditer votre catégorie avec succes !');
+        Session::flash('alert-class', 'success');
+
+        return redirect()->back();
     }
 
     /**

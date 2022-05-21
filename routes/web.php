@@ -110,7 +110,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
         Route::controller(CompteController::class)->group(function () {
             Route::get('/', 'list')->name('compte.list');
             Route::post('/', 'search')->name('compte.search');
-            Route::get('/delete/{compte}', 'destroy')->name('compte.delete');
             Route::get('/edit/{compte}', 'edit')->name('compte.edit');
             Route::post('/update/{compte}', 'update')->name('compte.update');
         });
