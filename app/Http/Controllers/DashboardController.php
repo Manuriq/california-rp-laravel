@@ -41,10 +41,6 @@ class DashboardController extends Controller
             'cIp'=>$ip
         ]);
 
-        $categories = Categorie::orderBy('order', 'ASC')->get();
-
-        $forums = Forum::orderBy('order', 'ASC')->get();
-
         return view('panel.index');
     }
 }
