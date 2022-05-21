@@ -23,12 +23,14 @@
                 </form>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-dark">
+                        <table class="table table-striped table-dark mb-2">
                             <thead>
                                 <tr>
                                     <th scope="col">Id</th>
                                     <th scope="col">Nom</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Discord ID</th>
+                                    <th scope="col">Discord Name</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -38,6 +40,8 @@
                                     <td>{{ $compte->id }}</td>
                                     <td><a href="{{ route('compte.edit', $compte->id) }}">{{ $compte->cNom }}</a></td>
                                     <td><span class="badge badge-default">{{ $compte->cEmail }}</span></td>
+                                    <td><span class="badge badge-default">{{ $compte->discord_id }}</span></td>
+                                    <td><span class="badge badge-default">{{ $compte->discord_name }}#{{ $compte->discord_disc }}</span></td>
                                     <td><a class="btn btn-default" href="{{ route('compte.edit', $compte->id) }}" role="button">Editer</a>
                                 </tr>
                                 @endforeach

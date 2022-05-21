@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Session;
 
 class DiscordController extends Controller
 {
@@ -26,17 +27,28 @@ class DiscordController extends Controller
 
         $user = Socialite::driver('discord')->user();
 
-        Auth()->user()->update([
-            'discord_id'=>$user->id,
-            'discord_name'=>$user->user['username'],
-            'discord_disc'=>$user->user['discriminator'],
-            'discord_email'=>$user->user['email'],
-            'discord_verified'=>$user->user['verified']
-        ]);
-        
-        Session::flash('title', 'Félicitation !'); 
-        Session::flash('message', 'Vous venez de synchroniser votre compte Discord.'); 
-        Session::flash('alert-class', 'success'); 
+        $compte = Compte::query()->where('discord_id', 'LIKE','%'.$user->id.'%');
+        if($compte->id != Auth()->user()->id){
+
+            Session::flash('title', 'Errur !'); 
+            Session::flash('message', 'Ce compte discord est déjà lié à un compte SFRP.'); 
+            Session::flash('alert-class', 'error');
+
+        }else{
+            Auth()->user()->update([
+                'discord_id'=>$user->id,
+                'discord_name'=>$user->user['username'],
+                'discord_disc'=>$user->user['discriminator'],
+                'discord_email'=>$user->user['email'],
+                'discord_verified'=>$user->user['verified']
+            ]);
+          
+            Session::flash('title', 'Félicitation !'); 
+            Session::flash('message', 'Vous venez de synchroniser votre compte Discord.'); 
+            Session::flash('alert-class', 'success'); 
+        }
+
+
 
         return redirect()->route('profile.show', ['compte' => Auth()->user()->id]);
     }

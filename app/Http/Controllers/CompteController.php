@@ -20,7 +20,7 @@ class CompteController extends Controller
 
     public function list()
     {
-        $comptes = Compte::paginate(10);
+        $comptes = Compte::paginate(20);
 
         return view('compte.list', [
             'comptes' => $comptes,
