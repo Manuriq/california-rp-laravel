@@ -23,6 +23,7 @@
                                     <input class="btn btn-default" style="width: 150px;" type="submit" value="Changer d'Avatar">
                                 </form>
                                 <!-- <a class="btn btn-default" href="{{ route('profile.ip') }}" role="button">Valider Mon IP</a> -->
+                                <a class="btn btn-default" href="{{ route('discord') }}" role="button">Synchroniser Discord</a>
                             @else
                                 <img class="img-fluid" src="{{ asset('storage/' . $compte->cAvatarUrl) }}" width="250" height="250" alt="">
                             @endif

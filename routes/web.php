@@ -9,6 +9,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DiscordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,9 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/discord', [DiscordController::class, 'redirectToProvider'])->name('discord');
+    Route::get('/discord/redirect', [DiscordController::class, 'handleProviderCallback']);
 
     // Les routes Profile
     Route::group(['prefix' => 'profile'], function() {
