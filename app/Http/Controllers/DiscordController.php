@@ -33,7 +33,7 @@ class DiscordController extends Controller
             'discord_email'=>$user->user['email'],
             'discord_verified'=>$user->user['verified']
         ]);
-
-        return redirect()->back();
+        
+        return redirect()->route('profile.show', ['compte' => Auth()->user()->id]);
     }
 }
