@@ -31,7 +31,7 @@ class DiscordController extends Controller
         //$about = Page::where('page', 'about-me')->get(); //id = 3
         $compte = DB::table('comptes')->where('discord_id', $user->id)->get();
         //Compte::where('discord_id', $user->id)->get();
-        dd($compte->cNom);
+        dd($compte["cNom"]);
         if($compte->id != Auth()->user()->id){
 
             Session::flash('title', 'Errur !'); 
