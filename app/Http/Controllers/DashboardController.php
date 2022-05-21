@@ -2,43 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class DashboardController extends Controller
 {
     public function index()
     {
 
-        /*$ip = $_SERVER['HTTP_CLIENT_IP'] 
-            ? $_SERVER['HTTP_CLIENT_IP'] 
-            : ($_SERVER['HTTP_X_FORWARDED_FOR'] 
-                ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
-                : $_SERVER['REMOTE_ADDR']);
- 
-            if (isset($_SERVER['HTTP_CLIENT_IP']))
-            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        else if(isset($_SERVER['HTTP_X_FORWARDED']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-        else if(isset($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']))
-            $ipaddress = $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
-        else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
-            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-        else if(isset($_SERVER['HTTP_FORWARDED']))
-            $ipaddress = $_SERVER['HTTP_FORWARDED'];
-        else if(isset($_SERVER['REMOTE_ADDR']))
-            $ipaddress = $_SERVER['REMOTE_ADDR'];
-        else
-            $ipaddress = 'UNKNOWN'; 
-            
-         
-        dd($ipaddress); */ 
-
-        $ip = $_SERVER["REMOTE_ADDR"];
-
+        if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+            $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+            $_SERVER['HTTP_CLIENT_IP'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+        }
+        $client  = @$_SERVER['HTTP_CLIENT_IP'];
+        $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+        $remote  = $_SERVER['REMOTE_ADDR'];
+    
+        if(filter_var($client, FILTER_VALIDATE_IP)){
+            $clientIp = $client;
+        }
+        elseif(filter_var($forward, FILTER_VALIDATE_IP)){
+            $clientIp = $forward;
+        }
+        else{
+            $clientIp = $remote;
+        }
+    
         Auth()->user()->update([
-            'cIp'=>$ip
+            'cIp'=>$clientIp
         ]);
 
         return view('panel.index');
