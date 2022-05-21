@@ -29,7 +29,7 @@ class DiscordController extends Controller
         $user = Socialite::driver('discord')->user();
         //$about = Page::where('page', 'about-me')->get(); //id = 3
         $compte = Compte::where('discord_id', $user->id)->get();
-        dd($compte->id);
+        dd($compte);
         if($compte->id != Auth()->user()->id){
 
             Session::flash('title', 'Errur !'); 
