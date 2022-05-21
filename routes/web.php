@@ -4,6 +4,7 @@ use App\Http\Controllers\ValidateIp;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\CompteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategorieController;
@@ -97,6 +98,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
                 Route::get('/create', 'create')->name('categorie.create');
                 Route::post('/store', 'store')->name('categorie.store');
             });
+        });
+    });
+
+    Route::group(['middleware' => ['modo'], 'prefix' => 'mod'], function() {
+        Route::controller(CompteController::class)->group(function () {
+            Route::get('/', 'list')->name('compte.list');
+            Route::post('/', 'search')->name('compte.search');
+            Route::get('/delete/{compte}', 'destroy')->name('compte.delete');
+            Route::get('/edit/{compte}', 'edit')->name('compte.edit');
+            Route::post('/update/{compte}', 'update')->name('compte.update');
         });
     });
 

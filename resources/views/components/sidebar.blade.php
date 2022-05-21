@@ -16,6 +16,7 @@
                     <li class="label">Administration</li>
                     <li><a href="{{ route('forum.index') }}"><i class="fa-solid fa-gears"></i> Gestion Forum</a></li>
                     <li><a href="{{ route('categorie.list') }}"><i class="fa-solid fa-gears"></i> Gestion Catégories</a></li>
+                    <li><a href="{{ route('compte.list') }}"><i class="fa-solid fa-gears"></i> Gestion Utilisateur</a></li>
                 @endif
             </ul>
         </div>
