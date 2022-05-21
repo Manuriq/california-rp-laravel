@@ -34,6 +34,10 @@ class DiscordController extends Controller
             'discord_verified'=>$user->user['verified']
         ]);
         
+        Session::flash('title', 'Félicitation !'); 
+        Session::flash('message', 'Vous venez de synchroniser votre compte Discord.'); 
+        Session::flash('alert-class', 'success'); 
+
         return redirect()->route('profile.show', ['compte' => Auth()->user()->id]);
     }
 }

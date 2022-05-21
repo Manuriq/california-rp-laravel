@@ -46,12 +46,39 @@
                             </div>
                             <div class="form-group">
                                 <label>Avertissements</label>
-                                <input type="text" class="form-control input-default" name="cAvert" placeholder="Avertissements" value="{{ $compte->cAvert }}{{ old('cAvert') }}" disabled>
+                                <input type="text" class="form-control input-default" placeholder="Avertissements" value="{{ $compte->cAvert }}" disabled>
                             </div>
                             @if ($compte->cTBan > time())
                                 <div class="form-group">
                                     <label>Utilisateur banni jusqu'au {{ date('d/m/Y H:i:s', $compte->cTBan) }}</label>
-                                    <input type="text" class="form-control input-default" name="cAvert" placeholder="Utilisateur banni" value="Raison: {{ $compte->ec_RBan }}" disabled>
+                                    <input type="text" class="form-control input-default" placeholder="Utilisateur banni" value="Raison: {{ $compte->ec_RBan }}" disabled>
+                                </div>
+                            @endif
+                            @if ($compte->discord_id != 0)
+                                <div class="form-group">
+                                    <label>Discord ID</label>
+                                    <input type="text" class="form-control input-default" placeholder="Discord ID" value="{{ $compte->discord_id }}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Discord Name</label>
+                                    <input type="text" class="form-control input-default" placeholder="Discord Name" value="{{ $compte->discord_name }}#{{ $compte->discord_disc }}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Discord Email</label>
+                                    <input type="email" class="form-control input-default" placeholder="Discord Email" value="{{ $compte->discord_email }}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Discord Vérifié</label>
+                                    @if ($compte->discord_verif == 0)
+                                        <input type="text" class="form-control input-default" value="Non" disabled>
+                                    @else
+                                        <input type="text" class="form-control input-default" value="Oui" disabled>
+                                    @endif 
+                                </div>
+                            @else
+                                <div class="form-group">
+                                    <label>Synchronisation Discord</label>
+                                    <input type="text" class="form-control input-default" value="Non Synchronisé" disabled>
                                 </div>
                             @endif
                             <div class="form-group">

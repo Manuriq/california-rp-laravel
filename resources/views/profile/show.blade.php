@@ -58,18 +58,29 @@
                       </ul>
                     </div>
                     @if (Auth::User()->id === $compte->id)
-                    <div class="user-skill mt-4">
+                        <div class="user-skill mt-4">
                         <h4>Vos Informations (Visible que pas vous même)</h4>
-                        <ul>
-                          <li>
-                            <span class="badge bg-default mb-2"><strong>Votre IP:</strong> {{ $compte->cIp ? $compte->cIp : "Aucune IP enregistrée" }}</span>
-                          </li>
-                          <li>
-                            <span class="badge bg-default mb-2"><strong>Votre Email:</strong> {{ $compte->cEmail }}</span>
-                          </li>
-                        </ul>
-                      </div>
-                      @endif
+                            <ul>
+                                <li>
+                                    <span class="badge bg-default mb-2"><strong>Votre IP:</strong> {{ $compte->cIp ? $compte->cIp : "Aucune IP enregistrée" }}</span>
+                                </li>
+                                <li>
+                                    <span class="badge bg-default mb-2"><strong>Votre Email:</strong> {{ $compte->cEmail }}</span>
+                                </li>
+                                @if ($compte->discord_id != 0)
+                                <li>
+                                    <span class="badge bg-default mb-2"><strong>ID Discord:</strong> {{ $compte->discord_id }}</span>
+                                </li>
+                                <li>
+                                    <span class="badge bg-default mb-2"><strong>Nom Discord:</strong> {{ $compte->discord_name }}#{{ $compte->discord_disc }}</span>
+                                </li>
+                                <li>
+                                    <span class="badge bg-default mb-2"><strong>Email Discord:</strong> {{ $compte->discord_email }}</span>
+                                </li>
+                                @endif
+                            </ul>
+                        </div>
+                    @endif
                   </div>
                   <div class="col-lg-9">
                     <div class="user-profile-name">{{ $compte->cNom }}</div>

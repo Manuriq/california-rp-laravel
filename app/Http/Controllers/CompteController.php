@@ -27,11 +27,13 @@ class CompteController extends Controller
     }
 
     public function search(Request $request)
-    {
+    {    
         $comptes = Compte::query()
             ->where('cNom', 'LIKE','%'.$request->search.'%')
             ->orWhere('cEmail', 'LIKE','%'.$request->search.'%')
-            ->paginate(10);
+            ->orWhere('discord_name', 'LIKE','%'.$request->search.'%')
+            ->orWhere('discord_id', 'LIKE','%'.$request->search.'%')
+            ->paginate(20);
         
         return view('compte.list', [
             'comptes' => $comptes,
