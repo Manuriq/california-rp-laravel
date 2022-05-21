@@ -28,7 +28,7 @@ class DiscordController extends Controller
 
         $user = Socialite::driver('discord')->user();
 
-        $compte = Compte::query()->where('discord_id', $user->id);
+        $compte = Compte::query()->where('discord_id', $user->id)->get();
         dd($compte->id, Auth()->user()->id);
         if($compte->id != Auth()->user()->id){
 
