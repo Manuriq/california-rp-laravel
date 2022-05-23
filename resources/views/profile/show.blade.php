@@ -59,7 +59,7 @@
                     </div>
                     @if (Auth::User()->id === $compte->id)
                         <div class="user-skill mt-4">
-                        <h4>Vos Informations (Visible que pas vous même)</h4>
+                        <h4>Vos Informations (Visible que par vous même)</h4>
                             <ul>
                                 <li>
                                     <span class="badge bg-default mb-2"><strong>Votre IP:</strong> {{ $compte->cIp ? $compte->cIp : "Aucune IP enregistrée" }}</span>
