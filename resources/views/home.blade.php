@@ -158,17 +158,17 @@
                 Etape n°1
               </p>
               <div class="w-full font-bold text-xl text-gray-800 px-6">
-                Acheter ou Télécharger GTA San Andreas.
+                Créer un compte sur notre panel.
               </div>
               <p class="text-gray-800 text-base px-6 mb-5">
-                Pour jouer sur le serveur vous devez télécharger une version clean de GTA San Andreas. Nous vous partageons un lien ci dessous.
+                Pour jouer sur le serveur vous devez créer un compte sur notre panel. Le personnage se crée directement en jeu !
               </p>
             </a>
           </div>
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
               <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                <a href="{{ @asset('games/gta-san-andreas.rar') }}">Télécharger GTA San Andreas</a>
+                <a href="{{ route('register') }}">Créer un comptre</a>
               </button>
             </div>
           </div>
@@ -180,17 +180,17 @@
                 Etape n°2
               </p>
               <div class="w-full font-bold text-xl text-gray-800 px-6">
-                Télécharger la version 0.3DL de San Andreas MultiPlayer.
+                Synchroniser votre compte Discord avec votre compte SFRP.
               </div>
               <p class="text-gray-800 text-base px-6 mb-5">
-                Ensuite vous devez télécharger et installer San Andreas MultiPlayer 0.3DL uniquement.
+                Connectez-vous sur le panel, et synchronisez votre compte depuis votre profile.
               </p>
             </a>
           </div>
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
               <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                <a href="{{ @asset('games/sa-mp-0.3.DL-R1-install.exe') }}">Télécharger San Andreas MultiPlayer 0.3DL</a>
+                <a href="{{ route('dashboard') }}">Synchroniser Discord</a>
               </button>
             </div>
           </div>
@@ -202,7 +202,7 @@
                 Etape n°3
               </p>
               <div class="w-full font-bold text-xl text-gray-800 px-6">
-                Téléchargez notre Launcher.
+                Téléchargez et installez notre Launcher.
               </div>
               <p class="text-gray-800 text-base px-6 mb-5">
                 Le téléchargement de notre Launcher est obligatoire pour pouvoir jouer sur San Fierro RolePlay.
@@ -212,7 +212,7 @@
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
               <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                <a href="https://launcher.sfrp.tk/setup.exe">Télécharger le Launcher San Fierro RolePlay</a>
+                <a href="https://launcher.sfrp.tk/Installer.msi">Télécharger le Launcher San Fierro RolePlay</a>
               </button>
             </div>
           </div>
