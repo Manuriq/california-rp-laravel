@@ -88,6 +88,11 @@ class ProfileController extends Controller
     public function update(Request $request, Compte $compte)
     {
         if($request->hasFile('cAvatar')){
+
+            $request->validate([
+                'cAvatar' => ['mimes:jpeg,jpg,png', 'max:1000'],
+            ]);
+
             $path = $request->cAvatar->store('avatars');
             Auth()->user()->update(['cAvatarUrl'=>$path]);
 
