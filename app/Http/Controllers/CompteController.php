@@ -82,7 +82,7 @@ class CompteController extends Controller
     public function edit(Compte $compte)
     {
         return view('compte.edit', [
-            'compte' => $compte,
+            'compte' => $compte
         ]);
     }
 
@@ -101,6 +101,7 @@ class CompteController extends Controller
 
         $compte->update([
             'whitelisted' => $request->whitelisted,
+            'beta' => $request->beta
           ]);
 
         Session::flash('title', 'Félicitation !');

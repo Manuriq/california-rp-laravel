@@ -93,6 +93,18 @@
                                     @endif
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label>Beta Test</label>
+                                <select class="form-control input-default" name="beta" size="1">
+                                    @if ($compte->beta == 1)
+                                        <option value="1" selected>Oui          
+                                        <option value="0">Non 
+                                    @else
+                                        <option value="1">Oui          
+                                        <option value="0" selected>Non 
+                                    @endif
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-default">Envoyer</button>
                         </form>
                     </div>
