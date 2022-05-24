@@ -25,7 +25,7 @@ class CreateComptesTable extends Migration
             $table->string('ec_RBan', 128)->nullable();
             $table->integer('cAdmin')->default(0);
             $table->integer('cRP')->default(0);
-            $table->string('cEmail');
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

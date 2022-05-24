@@ -36,13 +36,13 @@ class RegisteredUserController extends Controller
         
         $request->validate([
             'cNom' => ['required', 'string', 'max:255', 'unique:comptes'],
-            'cEmail' => ['required', 'string', 'email', 'max:255', 'unique:comptes'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:comptes'],
             'password' => ['required', 'string', 'min:6'],
             'repeat_password' => 'required|same:password|min:6'
         ]);
         $compte = Compte::create([
             'cNom' => $request->cNom,
-            'cEmail' => $request->cEmail,
+            'email' => $request->cEmail,
             'password' => Hash::make($request->password),
         ]);
 
