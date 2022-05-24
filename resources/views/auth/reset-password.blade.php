@@ -28,7 +28,7 @@
           <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div class="w-full">
               <img class="mx-auto" src="{{asset('img/sfrp_version_chaton_tachete.png')}}" alt="Office"/>
-              <form action="{{ route('password.email') }}" method="POST">
+              <form action="{{ route('password.reset') }}" method="POST">
                 @csrf
                 
               <h1
@@ -37,7 +37,6 @@
                 Mot de passe oublié
               </h1>
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Email</span>
                 <input type="hidden" name="token" value="{{ $request->route('token') }}">
                 <input type="hidden" name="email" value="{{ old('email', $request->email) }}">
               </label>
