@@ -65,7 +65,7 @@
                                     <span class="badge bg-default mb-2"><strong>Votre IP:</strong> {{ $compte->cIp ? $compte->cIp : "Aucune IP enregistrée" }}</span>
                                 </li>
                                 <li>
-                                    <span class="badge bg-default mb-2"><strong>Votre Email:</strong> {{ $compte->cEmail }}</span>
+                                    <span class="badge bg-default mb-2"><strong>Votre Email:</strong> {{ $compte->email }}</span>
                                 </li>
                                 @if ($compte->discord_id != 0)
                                 <li>

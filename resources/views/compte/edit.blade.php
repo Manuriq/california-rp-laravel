@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control input-default" name="cEmail" placeholder="Email" value="{{ $compte->cEmail }}{{ old('cEmail') }}" disabled>
+                                <input type="email" class="form-control input-default" name="email" placeholder="Email" value="{{ $compte->email }}{{ old('email') }}" disabled>
                             </div>
                             <div class="form-group">
                                 <label>Adresse IP</label>

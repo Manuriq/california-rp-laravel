@@ -39,7 +39,7 @@
                                 <tr class="text-align-center">
                                     <td>{{ $compte->id }}</td>
                                     <td><a href="{{ route('compte.edit', $compte->id) }}">{{ $compte->cNom }}</a></td>
-                                    <td><span class="badge badge-default">{{ $compte->cEmail }}</span></td>
+                                    <td><span class="badge badge-default">{{ $compte->email }}</span></td>
                                     <td><span class="badge badge-default">{{ $compte->discord_id }}</span></td>
                                     <td><span class="badge badge-default">{{ $compte->discord_name }}#{{ $compte->discord_disc }}</span></td>
                                     <td><a class="btn btn-default" href="{{ route('compte.edit', $compte->id) }}" role="button">Editer</a>

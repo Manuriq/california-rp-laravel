@@ -31,7 +31,7 @@ class CompteController extends Controller
     {    
         $comptes = Compte::query()
             ->where('cNom', 'LIKE','%'.$request->search.'%')
-            ->orWhere('cEmail', 'LIKE','%'.$request->search.'%')
+            ->orWhere('email', 'LIKE','%'.$request->search.'%')
             ->orWhere('discord_name', 'LIKE','%'.$request->search.'%')
             ->orWhere('discord_id', 'LIKE','%'.$request->search.'%')
             ->paginate(20);
