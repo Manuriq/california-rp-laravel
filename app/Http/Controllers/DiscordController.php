@@ -29,29 +29,33 @@ class DiscordController extends Controller
 
         $user = Socialite::driver('discord')->user();
 
-        $compte = Compte::where('discord_id', $user->id)->first();
-
-        if($compte != null && $compte->id != Auth()->user()->id){
-
+        if(!$user){
             Session::flash('title', 'Erreur !'); 
-            Session::flash('message', 'Ce compte discord est déjà lié à un compte SFRP.'); 
+            Session::flash('message', 'Une erreur est survenue, veuillez re-essayer.'); 
             Session::flash('alert-class', 'error');
-
         }else{
-            Auth()->user()->update([
-                'discord_id'=>$user->id,
-                'discord_name'=>$user->user['username'],
-                'discord_disc'=>$user->user['discriminator'],
-                'discord_email'=>$user->user['email'],
-                'discord_verified'=>$user->user['verified']
-            ]);
-          
-            Session::flash('title', 'Félicitation !'); 
-            Session::flash('message', 'Vous venez de synchroniser votre compte Discord.'); 
-            Session::flash('alert-class', 'success'); 
+            $compte = Compte::where('discord_id', $user->id)->first();
+
+            if($compte != null && $compte->id != Auth()->user()->id){
+    
+                Session::flash('title', 'Erreur !'); 
+                Session::flash('message', 'Ce compte discord est déjà lié à un compte SFRP.'); 
+                Session::flash('alert-class', 'error');
+    
+            }else{
+                Auth()->user()->update([
+                    'discord_id'=>$user->id,
+                    'discord_name'=>$user->user['username'],
+                    'discord_disc'=>$user->user['discriminator'],
+                    'discord_email'=>$user->user['email'],
+                    'discord_verified'=>$user->user['verified']
+                ]);
+              
+                Session::flash('title', 'Félicitation !'); 
+                Session::flash('message', 'Vous venez de synchroniser votre compte Discord.'); 
+                Session::flash('alert-class', 'success'); 
+            }
         }
-
-
 
         return redirect()->route('profile.show', ['compte' => Auth()->user()->id]);
     }

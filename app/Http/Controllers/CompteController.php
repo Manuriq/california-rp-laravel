@@ -105,7 +105,7 @@ class CompteController extends Controller
           ]);
 
         Session::flash('title', 'Félicitation !');
-        Session::flash('message', 'Vous venez d\'éditer votre catégorie avec succes !');
+        Session::flash('message', 'Vous venez d\'éditer le compte avec succes !');
         Session::flash('alert-class', 'success');
 
         return redirect()->back();
