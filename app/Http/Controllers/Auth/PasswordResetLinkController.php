@@ -43,7 +43,7 @@ class PasswordResetLinkController extends Controller
             'token' => $token
         ]);
 
-        Mail::to($request->email)->send(new ResetPassword($token));
+        Mail::to($request->email)->send(new ResetPassword($token, $request->email));
 
         Session::flash('message', 'Un email a été envoyé à l\'adresse indiquée. Vérifiez vos spam.');
 

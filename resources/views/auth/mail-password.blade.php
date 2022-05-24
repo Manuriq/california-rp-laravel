@@ -1,1 +1,1 @@
-Vous pouvez ré-initialiser votre mot de passe via ce lien: <a href="https://sfrp.tk/reset-password/{{ $token }}">Ré-initialiser son mot de passe</a>
+Vous pouvez ré-initialiser votre mot de passe via ce lien: <a href="https://sfrp.tk/reset-password/{{ $token }}?email={{ $email }}">Ré-initialiser son mot de passe</a>
