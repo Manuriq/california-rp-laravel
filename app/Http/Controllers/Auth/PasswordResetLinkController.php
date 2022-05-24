@@ -38,9 +38,9 @@ class PasswordResetLinkController extends Controller
         ]);
 
         $token = Str::random(60);
-        $passwordReset = PasswordReset::updateOrCreate([
-            'email' => $request->email, 
-            'token' => $token
+        $passwordReset = PasswordReset::updateOrCreate([   
+            ['email' => $request->email, 'token' => $token],
+            ['email' => $request->email, 'token' => $token]
         ]);
 
         Mail::to($request->email)->send(new ResetPassword($token, $request->email));
