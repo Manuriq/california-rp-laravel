@@ -38,12 +38,12 @@ class PasswordResetLinkController extends Controller
         ]);
 
         $token = Str::random(60);
-        $passwordReset = PasswordReset::updateOrCreate(  
+        $passwordReset = PasswordReset::firstOrNew(
             ['email' => $request->email],
             ['email' => $request->email, 'token' => $token]
         );
 
-        Mail::to($request->email)->send(new ResetPassword($token, $request->email));
+        Mail::to($request->email)->send(new ResetPassword($passwordReset->token, $passwordReset->email));
 
         Session::flash('message', 'Un email a été envoyé à l\'adresse indiquée. Vérifiez vos spam.');
 
