@@ -53,7 +53,7 @@ class NewPasswordController extends Controller
                 'remember_token' => Str::random(60),
             ]); 
 
-            return route('login');
+            return redirect()->route('login');
         }else{
             Session::flash('message', 'Le token est invalide ou expiré, veuillez refaire une demande de ré-initialisation.');          
         }
