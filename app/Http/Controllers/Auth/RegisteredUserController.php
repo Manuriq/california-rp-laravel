@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
         ]);
         $compte = Compte::create([
             'cNom' => $request->cNom,
-            'email' => $request->cEmail,
+            'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
