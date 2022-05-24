@@ -28,7 +28,7 @@
           <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div class="w-full">
               <img class="mx-auto" src="{{asset('img/sfrp_version_chaton_tachete.png')}}" alt="Office"/>
-              <form action="{{ route('password.email') }}" method="POST">
+              <form action="{{ route('password.update') }}" method="POST">
                 @csrf
                 
               <h1
