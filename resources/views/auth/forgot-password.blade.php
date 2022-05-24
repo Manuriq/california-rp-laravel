@@ -50,6 +50,9 @@
               bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
               type="submit" value="Envoyer">
             </form>
+            @if(Session::has('message'))
+                {{ Session::get('message') }}
+            @endif
             </div>
           </div>
         </div>

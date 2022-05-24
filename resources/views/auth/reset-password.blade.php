@@ -28,7 +28,7 @@
           <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div class="w-full">
               <img class="mx-auto" src="{{asset('img/sfrp_version_chaton_tachete.png')}}" alt="Office"/>
-              <form action="{{ route('password.update') }}" method="POST">
+              <form action="{{ route('password.email') }}" method="POST">
                 @csrf
                 
               <h1
@@ -71,6 +71,9 @@
               <input class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150
               bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
               type="submit" value="Envoyer">
+              @if(Session::has('message'))
+                {{ Session::get('message') }}
+              @endif
             </form>
             </div>
           </div>
