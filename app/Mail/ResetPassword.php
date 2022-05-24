@@ -28,7 +28,7 @@ class ResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->view('auth.reset-password')
+        return $this->view('auth.mail-password')
                     ->with([
                         'token' => $this->token,
                     ]);
