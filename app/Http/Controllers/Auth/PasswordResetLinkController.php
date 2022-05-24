@@ -45,9 +45,7 @@ class PasswordResetLinkController extends Controller
 
         Mail::to($request->email)->send(new ResetPassword($token));
 
-        Session::flash('title', 'Email envoyé');
         Session::flash('message', 'Un email a été envoyé à l\'adresse indiquée. Vérifiez vos spam.');
-        Session::flash('alert-class', 'success');
 
         return redirect()->back();
     }

@@ -37,33 +37,25 @@ class NewPasswordController extends Controller
         $request->validate([
             'token' => ['required'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'string', 'min:6'],
+            'password_confirmation' => 'required|same:password|min:6'
         ]);
 
-        $reset = DB::table('password_resets')->where('email', $request->email)->first();
+        $reset = DB::table('password_resets')->where('token', $request->token)->first();
 
-        if($reset->token)
-        // Here we will attempt to reset the user's password. If it is successful we
-        // will update the password on an actual user model and persist it to the
-        // database. Otherwise we will parse the error and return the response.
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user) use ($request) {
-                $user->forceFill([
-                    'password' => Hash::make($request->password),
-                    'remember_token' => Str::random(60),
-                ])->save();
+        if($reset->email = $request->email){
 
-                event(new PasswordReset($user));
-            }
-        );
-        dd($status);
-        // If the password was successfully reset, we will redirect the user back to
-        // the application's home authenticated view. If there is an error we can
-        // redirect them back to where they came from with their error message.
-        /*return $status == Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with('status', __($status))
-                    : back()->withInput($request->only('email'))
-                            ->withErrors(['email' => __($status)]);*/
+            $compte = Compte::where('email', $request->email);
+            $compte->update([
+                'password' => Hash::make($request->password),
+                'remember_token' => Str::random(60),
+            ]); 
+
+            return route('login');
+        }else{
+            Session::flash('message', 'Le token est invalide ou expiré, veuillez refaire une demande de ré-initialisation.');          
+        }
+
+        return redirect()->back();
     }
 }
