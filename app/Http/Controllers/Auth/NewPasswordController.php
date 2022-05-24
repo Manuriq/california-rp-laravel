@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Session;
 
 class NewPasswordController extends Controller
 {
@@ -35,7 +36,7 @@ class NewPasswordController extends Controller
     {
         $request->validate([
             'token' => ['required'],
-            'cEmail' => ['required', 'cEmail'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -53,6 +54,10 @@ class NewPasswordController extends Controller
                 event(new PasswordReset($user));
             }
         );
+
+        Session::flash('title', 'Mot de Passe modifié');
+        Session::flash('message', 'Votre mot de passe a bien été modifié.');
+        Session::flash('alert-class', 'success');
 
         // If the password was successfully reset, we will redirect the user back to
         // the application's home authenticated view. If there is an error we can
