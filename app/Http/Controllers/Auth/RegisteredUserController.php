@@ -44,6 +44,7 @@ class RegisteredUserController extends Controller
             'cNom' => $request->cNom,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'remember_token' => Str::random(60)
         ]);
 
         event(new Registered($compte));
