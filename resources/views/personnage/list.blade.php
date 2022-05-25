@@ -12,7 +12,7 @@
                     <li class="breadcrumb-item">Vos Personnages</li>
                 </ol>
             </div>
-            <a class="btn btn-default" href="{{ route('categorie.create') }}" role="button">Acheter des points shop</a>
+            <a class="btn btn-default" href="" role="button">Acheter des points shop</a>
             <div class="card">
                 <div class="card-title">
                     <h4>Liste de vos personnages (Points Shop: {{ Auth::User()->shop }})</h4>        

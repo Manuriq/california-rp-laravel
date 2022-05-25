@@ -7,6 +7,7 @@ use App\Http\Controllers\ForumController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\DiscordController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
@@ -34,8 +35,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
     Route::get('/discord', [DiscordController::class, 'redirectToProvider'])->name('discord');
     Route::get('/discord/redirect', [DiscordController::class, 'handleProviderCallback']);
 
-
-    // Les routes Profile
+    // Les routes Personnages
     Route::group(['prefix' => 'character'], function() {
         Route::controller(PersonnageController::class)->group(function () {
             Route::get('/', 'list')->name('personnage.list');
@@ -43,6 +43,15 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
         });
     });
 
+    // Les routes Shop
+    Route::group(['prefix' => 'shop'], function() {
+        Route::controller(PaymentController::class)->group(function () {
+            Route::get('/', 'index')->name('shop.index');
+            Route::post('/charge', 'charge')->name('shop.charge');
+            Route::get('/success', 'success')->name('shop.success');
+            Route::get('/error', 'errors')->name('shop.error');
+        });
+    });
 
     // Les routes Profile
     Route::group(['prefix' => 'profile'], function() {
