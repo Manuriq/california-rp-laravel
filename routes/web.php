@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\CompteController;
+use App\Http\Controllers\DiscordController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DiscordController;
+use App\Http\Controllers\PersonnageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
 
     Route::get('/discord', [DiscordController::class, 'redirectToProvider'])->name('discord');
     Route::get('/discord/redirect', [DiscordController::class, 'handleProviderCallback']);
+
+
+    // Les routes Profile
+    Route::group(['prefix' => 'character'], function() {
+        Route::controller(PersonnageController::class)->group(function () {
+            Route::get('/', 'list')->name('personnage.list');
+            Route::get('/addtime/{personnage}', 'addtime')->name('personnage.addtime');
+        });
+    });
+
 
     // Les routes Profile
     Route::group(['prefix' => 'profile'], function() {
