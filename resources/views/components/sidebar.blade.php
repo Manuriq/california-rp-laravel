@@ -12,7 +12,7 @@
                 <li class="label">Dashboard</li>
                 <li><a href="{{ route('home') }}"><i class="fa-solid fa-house"></i> Accueil</a></li>
                 <li><a href="{{ route('personnage.list') }}"><i class="fa-solid fa-users"></i> Vos personnages</a></li>
-                <li><a href="{{ route('categorie.index') }}"><i class="fa-solid fa-comment-dots"></i> Forum</a></li>
+                <li><a href="https://forum.sfrp.tk"><i class="fa-solid fa-comment-dots"></i> Forum</a></li>
                 @if (Auth::User()->cAdmin > 1)
                     <li class="label">Administration</li>
                     <li><a href="{{ route('forum.index') }}"><i class="fa-solid fa-gears"></i> Gestion Forum</a></li>
