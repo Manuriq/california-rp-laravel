@@ -26,7 +26,7 @@ class PersonnageController extends Controller
      */
     public function list()
     {
-        $personnages = Personnage::where('ep_CompteID', Auth::User()->id)
+        $personnages = Personnage::where('ep_CompteID', Auth::User()->member_id)
                                     ->where('ep_Disponible', 0)
                                     ->get();
 

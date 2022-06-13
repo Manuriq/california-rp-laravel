@@ -11,6 +11,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\WhitelistController;
 use App\Http\Controllers\PersonnageController;
 
 /*
@@ -53,12 +54,25 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function() {
         });
     });
 
+    // Les routes Shop
+    Route::group(['prefix' => 'whitelist'], function() {
+        Route::controller(WhitelistController::class)->group(function () {
+            Route::get('/', 'index')->name('whitelist.index');
+            Route::get('/list', 'list')->name('whitelist.list');
+            Route::get('/create', 'create')->name('whitelist.create');
+            Route::post('/update/{whitelist}', 'update')->name('whitelist.update');
+            Route::post('/admin/{whitelist}', 'admin')->name('whitelist.admin');
+            Route::post('/list', 'search')->name('whitelist.search');
+            Route::get('/show/{whitelist}', 'show')->name('whitelist.show');
+        });
+    });
+
     // Les routes Profile
     Route::group(['prefix' => 'profile'], function() {
         Route::controller(ProfileController::class)->group(function () {
             Route::get('/validateip', 'validateip')->name('profile.ip');
             Route::post('/avatar', 'update')->name('profile.update');
-            Route::get('/{compte}', 'show')->name('profile.show');
+            Route::get('/', 'index')->name('profile.show');
         });
     });
 

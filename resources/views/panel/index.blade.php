@@ -2,23 +2,26 @@
 
 @section("content")
 
-<div class="content-wrap">
-  <div class="main">
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-lg-8 p-r-0 title-margin-right">
-                  <div class="page-header">
-                      <div class="page-title">
-                          <h1>Salut, <span>{{ Auth::User()->cNom }}</span></h1>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- /# row -->
-          <section id="main-content">
-            Le site est encore en développement, n'hésitez pas à report les bugs
-          </section>
-      </div>
-  </div>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">California RolePlay</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <!-- Approach -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Bienvenue!</h6>
+            </div>
+            <div class="card-body">
+                <p>Bonjour et bienvenue sur l'accueil du panel de <span class="font-weight-bold text-primary">California RolePlay</span>.</p>
+                <p class="mb-0">Si vous rencontrez des erreurs lors de votre navigation n'hésitez pas à nous report les bugs directement dans la partie
+                     <span class="font-weight-bold">rapport de bug</span> de notre forum. Merci et bonne navigation.</p>
+            </div>
+        </div>
+
+    </div>
 </div>
 @endsection

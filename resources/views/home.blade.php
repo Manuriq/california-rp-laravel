@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-      San Fierro RolePlay - SA:MP GTA
+      California RolePlay
     </title>
-    <meta name="description" content="San Fierro RolePlay est un serveur GTA SA:MP avec un script de A à Z." />
+    <meta name="description" content="California RolePlay est un serveur GTA SA:MP avec un script de A à Z." />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
-    <link rel="icon" type="image/x-icon" href="{{ @asset('img/sfrp_favico.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ @asset('img/larp-logo.png') }}">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     <style>
       .gradient {
-        background: linear-gradient(90deg, #4f4df7 0%, #6bc8ff 100%);
+          background: linear-gradient(117deg, #f36e3a 0%, #ffa27dcf 100%);
       }
     </style>
   </head>
@@ -26,11 +26,7 @@
     <nav id="header" class="fixed w-full z-30 top-0 text-white">
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div class="pl-4 flex items-center">
-          <img src="{{ @asset('img/sfrp_favico.png') }}" width="65px" height="65px" class="mx-4" alt="">
-          <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-            <!--Icon from: http://www.potlabicons.com/ -->   
-            SAN FIERRO ROLEPLAY
-          </a>
+          <img src="{{ @asset('img/bannière.png') }}" width="250px" height="65px" alt="">
         </div>
         <div class="block lg:hidden pr-4">
           <button id="nav-toggle" class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
@@ -52,35 +48,30 @@
               <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#discord">Discord</a>
             </li>
             <li class="mr-3">
-              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="https://forum.sfrp.tk">Forum</a>
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="http://forum.california-rp.fr">Forum</a>
             </li>
           </ul>
           <button
             id="navAction"
             class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
           >
-            <a href="{{ route('dashboard') }}"> Dashboard</a>
+            <a href="{{ route('dashboard') }}"> Panel</a>
           </button>
         </div>
       </div>
       <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
     <!--Hero-->
-    <div class="pt-24">
+    <div class="pt-32">
       <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <!--Left Col-->
         <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-          <p class="uppercase tracking-loose w-full">Qui sommes nous?</p>
-          <h1 class="my-4 text-5xl font-bold leading-tight">
-            La seule limite c'est votre imagination!
-          </h1>
-          <p class="leading-normal text-2xl mb-8">
-            San Fierro RolePlay est serveur GTA San Andreas MultiPlayer basé sur la ville de San Fierro! Retrouvez un script inédit développé de A à Z et pensé
-            pour la communauté !
-          </p>
-          <button class="mx-auto mb-20 lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-            <a href="{{ route('register') }}">Rejoignez-nous !</a> 
+      
+          <img src="{{ @asset('img/cops-wooman.png') }}" alt="">     
+          <button class="mb-20 lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <a href="http://forum.california-rp.fr/index.php?/register/">Rejoignez-nous !</a> 
           </button>
+         
         </div>
       </div>
     </div>
@@ -168,7 +159,7 @@
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
               <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                <a href="{{ route('register') }}">Créer un compte</a>
+                <a href="http://forum.california-rp.fr/index.php?/register/">Créer un compte</a>
               </button>
             </div>
           </div>
@@ -197,7 +188,7 @@
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="https://launcher.sfrp.tk/setup.exe" class="flex flex-wrap no-underline hover:no-underline">
+            <a href="http://launcher.california-rp.fr/setup.exe" class="flex flex-wrap no-underline hover:no-underline">
               <p class="w-full text-gray-600 text-xs md:text-sm px-6">
                 Etape n°3
               </p>
@@ -212,7 +203,7 @@
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
               <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                <a href="https://launcher.sfrp.tk/Installer.msi">Télécharger le Launcher San Fierro RolePlay</a>
+                <a href="http://launcher.california-rp.fr/Installer.msi">Télécharger le Launcher San Fierro RolePlay</a>
               </button>
             </div>
           </div>
@@ -265,7 +256,7 @@
         N'attendez-plus créez votre compte !
       </h3>
       <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-        <a href="{{ route('register') }}">S'inscrire!</a> 
+        <a href="http://forum.california-rp.fr/index.php?/register/">S'inscrire!</a> 
       </button>
     </section>
     <!-- jQuery if you need it
