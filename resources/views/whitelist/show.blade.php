@@ -10,6 +10,7 @@
 <div class="row">
     <div class="col-lg-12 mb-4">
         <form action="{!! route('whitelist.admin', $whitelist->id) !!}" method="POST">
+            @csrf
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Expliquez ce qu'est le PowerGame, MetaGame, DeathMatch, RolePlay et donnez 2 exemples pour chacune de vos explications:</h6>
@@ -66,7 +67,7 @@
                 <div class="card-body">
                     <select class="form-control input-default" name="statut" size="1">
                         <option value="2">Valider          
-                        <option value="0" selected>Refuser 
+                        <option value="3" selected>Refuser 
                     </select>
                 </div>
             </div>

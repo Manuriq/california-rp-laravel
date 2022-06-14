@@ -108,7 +108,7 @@
               Système de Housing complet!
             </h3>
             <p class="text-gray-600 align-middle">
-              Sur San Fierro RolePlay vous pouvez être propriétaire comme locataire, et surtout vous pouvez aménager votre maison comme il vous semble
+              Sur California RolePlay vous pouvez être propriétaire comme locataire, et surtout vous pouvez aménager votre maison comme il vous semble
               dans les deux cas
             </p>
           </div>
@@ -188,7 +188,7 @@
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="http://launcher.california-rp.fr/setup.exe" class="flex flex-wrap no-underline hover:no-underline">
+            <a href="http://forum.california-rp.fr/index.php?/files/" class="flex flex-wrap no-underline hover:no-underline">
               <p class="w-full text-gray-600 text-xs md:text-sm px-6">
                 Etape n°3
               </p>
@@ -196,14 +196,14 @@
                 Téléchargez et installez notre Launcher.
               </div>
               <p class="text-gray-800 text-base px-6 mb-5">
-                Le téléchargement de notre Launcher est obligatoire pour pouvoir jouer sur San Fierro RolePlay.
+                Le téléchargement de notre Launcher est obligatoire pour pouvoir jouer sur California RolePlay.
               </p>
             </a>
           </div>
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
               <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                <a href="http://launcher.california-rp.fr/Installer.msi">Télécharger le Launcher San Fierro RolePlay</a>
+                <a href="http://forum.california-rp.fr/index.php?/files/">Télécharger le Launcher</a>
               </button>
             </div>
           </div>

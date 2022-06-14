@@ -16,18 +16,19 @@
                 <h6 class="m-0 font-weight-bold text-primary">Gérer les demandes de whitelist</h6>
             </div>
             <div class="card-body">
-                @if ($whitelists->count() == 0)
-                        Il n'y a <span class="text-primary">aucune</span> demande de whitelist en cours.
-                @else    
                 <form action="{{ route('whitelist.search') }}" method="post">
                     @csrf
                     <input type="text" class="form-control input-default mb-2"name="search" placeholder="Recherche par: Joueur, Email, Discord Name, Discord Id, Discord Email">
                     <select class="form-control input-default" style="width:25%" name="statut" size="1">
                         <option value="1" selected>En attentes       
-                        <option value="2">Traités 
+                        <option value="2">Accepté 
+                        <option value="3">Refusé 
                     </select>
                     <input type="submit" class="btn btn-primary my-2" value="Chercher">
                 </form>
+                @if ($whitelists->count() == 0)
+                        Il n'y a <span class="text-primary">aucune</span> demande de whitelist en cours.
+                @else    
                     <div class="table-responsive">
                         <table class="table table-striped text-center">
                             <thead>
@@ -50,8 +51,10 @@
                                                 @if ($whitelist->statut == 1)
                                                     <td class="col-2"><span class="badge badge-warning">En attente</span></td>
                                                 @elseif ($whitelist->statut == 2)
-                                                    <td class="col-2"><span class="badge badge-danger">Traité</span></td>
-                                                @endif         
+                                                    <td class="col-2"><span class="badge badge-success">Accepté</span></td>
+                                                @elseif ($whitelist->statut == 3)
+                                                    <td class="col-2"><span class="badge badge-danger">Refusé</span></td>
+                                                @endif          
                                                 <td class="col-3"><a class="btn btn-primary" href="{{ route('whitelist.show', $whitelist->id) }}" role="button">Sélectionner</a>
                                             </tr>
                                         @endif 
