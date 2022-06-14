@@ -15,6 +15,7 @@ class User extends Authenticatable
 
     protected $table = 'core_members';
     protected $primaryKey = 'member_id';
+    protected $guarded = ['member_id'];
 
     protected $hidden = [
         'members_pass_hash',

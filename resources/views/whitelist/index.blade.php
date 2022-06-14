@@ -17,20 +17,38 @@
             </div>
             <div class="card-body">
                 <p>
-                @if (!$whitelist)
+                @if (Auth::User()->discord_id != 0)
+                    @if (!$whitelist)
                     Vous vous apprêtez à passer la whitelist pour jouer sur San Fierro RolePlay, assurez-vous d'avoir correctement lu le règlement du serveur,
                     vous n'avez le droit qu'à 3 chances. <br><br>
                     <a class="btn btn-primary" href="{{ route('whitelist.create') }}" role="button">Passer la whitelist</a>
-                @elseif ($whitelist->statut == 1)
-                    Votre demande de whitelist est en supérvision par notre équipe administrative. Merci de patienter.
-                @elseif ($whitelist->statut == 2)
-                    Félicitation votre demande de whitelist a été accepté. Vous pouvez vous connecter en jeu.
-                @elseif ($whitelist->tryout < 3)
-                    Votre demande de whitelist a été refusée pour la raison suivante: {!! $whitelist->comment !!}({{ $whitelist->tryout }}/3 tentatives restantes)<br><br>
-                    <a class="btn btn-primary" href="{{ route('whitelist.create') }}" role="button">Re-tenter la whitelist</a>
+                    @elseif ($whitelist->statut == 1)
+                        Votre demande de whitelist est en supérvision par notre équipe administrative. Merci de patienter.
+                    @elseif ($whitelist->statut == 2)
+                        Votre demande de whitelist a été traité par {{ $whitelist->admin }}. Félicitation vous avez été accepté, vous pouvez vous connecter en jeu. Commentaire Staff:<br>
+                        @if ($whitelist->comment == "")
+                            <p>Aucun commentaire.</p><br>
+                        @else 
+                            {!! $whitelist->comment !!}<br>
+                        @endif
+                        ({{ $whitelist->tryout }}/3 tentatives)
+                    @elseif ($whitelist->tryout < 3)
+                        Votre demande de whitelist a été traité par {{ $whitelist->admin }}. Vous avez été refusée. Commentaire Staff:<br>
+                        @if ($whitelist->comment == "")
+                            <p>Aucun commentaire.</p><br>
+                        @else 
+                            {!! $whitelist->comment !!}<br>
+                        @endif
+                        
+                        ({{ $whitelist->tryout }}/3 tentatives)<br>
+                        <a class="btn btn-primary mt-2" href="{{ route('whitelist.create') }}" role="button">Re-tenter la whitelist</a>
+                    @else
+                        Votre demande de whitelist a été traité par {{ $whitelist->admin }}. Vous avez été refusée définitivement. Commentaire Staff:<br>
+                        {!! $whitelist->comment !!}<br>
+                        ({{ $whitelist->tryout }}/3 tentatives)
+                    @endif
                 @else
-                    Votre demande de whitelist a été refusée pour la raison suivante: {{ $whitelist->comment }}. ({{ $whitelist->tryout }}/3 tentatives)<br>
-                    Vous n'avez plus de tentatives, vous ne correspondez pas aux attentes du serveur.
+                    <p>Vous devez d'abord <span class="font-weight-bold text-primary">synchroniser</span> votre compte discord avant de pouvroir passer la whitelist.</p>
                 @endif
                 </p>
             </div>

@@ -160,6 +160,7 @@ class WhitelistController extends Controller
         $whitelist->update([
             'statut' => $request->statut,
             'comment' => $request->comment,
+            'admin' => Auth::User()->name
           ]);
           
           Session::flash('title', 'Félicitation !'); 

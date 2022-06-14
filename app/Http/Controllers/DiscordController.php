@@ -1,7 +1,7 @@
 <?php 
 namespace App\Http\Controllers;
 
-use App\Models\Compte;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -34,7 +34,7 @@ class DiscordController extends Controller
             Session::flash('message', 'Une erreur est survenue, veuillez re-essayer.'); 
             Session::flash('alert-class', 'error');
         }else{
-            $compte = Compte::where('discord_id', $user->id)->first();
+            $compte = User::where('discord_id', $user->id)->first();
 
             if($compte != null && $compte->id != Auth()->user()->id){
     
@@ -57,6 +57,6 @@ class DiscordController extends Controller
             }
         }
 
-        return redirect()->route('profile.show', ['compte' => Auth()->user()->id]);
+        return redirect()->route('dashboard');
     }
 }
