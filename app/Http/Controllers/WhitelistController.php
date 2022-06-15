@@ -129,7 +129,13 @@ class WhitelistController extends Controller
      */
     public function update(Request $request, Whitelist $whitelist)
     {
-        
+        if($whitelist->tryout > 2 || $whitelist->state == 1 || $whitelist->state == 2)
+        {
+            return view('whitelist.index', [
+                'whitelist' => $whitelist,
+            ]);
+        }
+
         $whitelist->update([
             'res_a' => $request->res_a,
             'res_b' => $request->res_b,

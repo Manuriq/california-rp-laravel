@@ -22,6 +22,10 @@
                     Vous vous apprêtez à passer la whitelist pour jouer sur San Fierro RolePlay, assurez-vous d'avoir correctement lu le règlement du serveur,
                     vous n'avez le droit qu'à 3 chances. <br><br>
                     <a class="btn btn-primary" href="{{ route('whitelist.create') }}" role="button">Passer la whitelist</a>
+                    @elseif ($whitelist->statut == 0)
+                    Vous vous apprêtez à passer la whitelist pour jouer sur San Fierro RolePlay, assurez-vous d'avoir correctement lu le règlement du serveur,
+                    vous n'avez le droit qu'à 3 chances. <br><br>
+                    <a class="btn btn-primary" href="{{ route('whitelist.create') }}" role="button">Passer la whitelist</a>
                     @elseif ($whitelist->statut == 1)
                         Votre demande de whitelist est en supérvision par notre équipe administrative. Merci de patienter.
                     @elseif ($whitelist->statut == 2)
@@ -32,7 +36,7 @@
                             {!! $whitelist->comment !!}<br>
                         @endif
                         ({{ $whitelist->tryout }}/3 tentatives)
-                    @elseif ($whitelist->statut == 3 && $whitelist->tryout != 3)
+                    @elseif ($whitelist->statut == 3 && $whitelist->tryout > 2)
                         Votre demande de whitelist a été traité par {{ $whitelist->admin }}. Vous avez été refusée. Commentaire Staff:<br>
                         @if ($whitelist->comment == "")
                             <p>Aucun commentaire.</p><br>

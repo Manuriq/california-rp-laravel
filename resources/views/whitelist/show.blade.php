@@ -3,7 +3,19 @@
 @section("content")
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Questionnaire whitelist de {{ $user->name }} ({{ $user->email }}) ({{ $whitelist->tryout }}/3)</h1>
+    <h1 class="h3 mb-0 text-gray-800">
+        @if ($whitelist->statut == 1)
+            <td class="col-2"><span class="badge badge-warning">En attente</span></td>
+        @elseif ($whitelist->statut == 2)
+            <td class="col-2"><span class="badge badge-success">Accepté</span></td>
+        @elseif ($whitelist->statut == 3)
+            <td class="col-2"><span class="badge badge-danger">Refusé</span></td>
+        @endif   
+        {{ $user->name }} [{{ $user->email }}] ({{ $whitelist->tryout }}/3)
+        @if ($whitelist->admin != null)
+            (Admin: {{ $whitelist->admin }})
+        @endif
+    </h1>
 </div>
 
 <!-- Content Row -->
