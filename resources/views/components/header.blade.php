@@ -13,7 +13,15 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::User()->name }}</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+
+                    {{ Auth::User()->name }}
+                    @if (Auth::User()->discord_id == 0)
+                        (Discord Non Synchronisé)
+                    @else
+                        ({{ Auth::User()->discord_name }}#{{ Auth::User()->discord_disc }})
+                    @endif
+                </span>
                 <img class="img-profile rounded-circle"
                     src="{{ asset('img/logo.png') }}">
             </a>
@@ -30,6 +38,19 @@
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
                     Déconnexion
                 </a>
+       
+                @if (Auth::User()->discord_id == 0)
+                    <a class="dropdown-item" href="{{ route('discord') }}">
+                        <i class="fa-brands fa-discord"></i>
+                        Synchroniser Discord
+                    </a>
+                @else
+                    <a class="dropdown-item" href="{{ route('discord') }}">
+                        <i class="fa-brands fa-discord"></i>
+                        {{ Auth::User()->discord_name }}#{{ Auth::User()->discord_disc }}
+                    </a>        
+                @endif
+                
             </div>
         </li>
 

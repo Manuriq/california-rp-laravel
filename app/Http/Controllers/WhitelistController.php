@@ -26,11 +26,14 @@ class WhitelistController extends Controller
 
     public function list()
     {
-        if(Auth::User()->ingame_adminrank < 2){
-            return redirect()->back();
+        if(Auth::User()->ingame_adminrank < 1){
+            return redirect()->route('dashboard');
         }
 
-        $whitelists = Whitelist::where('statut', "=", 1)->paginate(20);
+
+        $whitelists = Whitelist::where('statut', "=", 1)
+            ->orderBy('updated_at', 'DESC')
+            ->get();
 
         $users = User::all();
 
@@ -43,7 +46,9 @@ class WhitelistController extends Controller
     public function search(Request $request)
     {    
 
-        $whitelists = Whitelist::where('statut', "=", $request->statut)->paginate(10);
+        $whitelists = Whitelist::where('statut', "=", $request->statut)
+            ->orderBy('updated_at', 'DESC')
+            ->get();
         
         $users = User::query()
             ->where('name', 'LIKE','%'.$request->search.'%')
@@ -70,7 +75,7 @@ class WhitelistController extends Controller
             ['member_id' => Auth::User()->member_id]
         );
 
-        if($whitelist->tryout > 2 || $whitelist->state == 1 || $whitelist->state == 2)
+        if($whitelist->tryout > 2 || $whitelist->statut == 1 || $whitelist->statut == 2)
         {
             return view('whitelist.index', [
                 'whitelist' => $whitelist,
@@ -101,6 +106,10 @@ class WhitelistController extends Controller
      */
     public function show(Whitelist $whitelist)
     {
+        if(Auth::User()->ingame_adminrank < 1){
+            return redirect()->route('dashboard');
+        }
+
         $user = User::where('member_id', $whitelist->member_id)->first();
 
         return view('whitelist.show', [
@@ -129,7 +138,7 @@ class WhitelistController extends Controller
      */
     public function update(Request $request, Whitelist $whitelist)
     {
-        if($whitelist->tryout > 2 || $whitelist->state == 1 || $whitelist->state == 2)
+        if($whitelist->tryout > 2 || $whitelist->statut == 1 || $whitelist->statut == 2)
         {
             return view('whitelist.index', [
                 'whitelist' => $whitelist,
@@ -159,7 +168,11 @@ class WhitelistController extends Controller
     public function admin(Request $request, Whitelist $whitelist)
     {
         if(Auth::User()->ingame_adminrank < 1){
-            return redirect()->back();
+            return redirect()->route('dashboard');
+        }
+
+        if($whitelist->statut != 1 && Auth::User()->ingame_adminrank != 6){
+            return redirect()->route('whitelist.list');
         }
 
         $whitelist->update([

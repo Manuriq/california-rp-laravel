@@ -34,30 +34,32 @@
                         <table class="table table-striped text-center">
                             <thead>
                                 <tr class="align-items-center">
-                                    <th scope="col-1">#</th>
-                                    <th scope="col-3">Compte</th>
+                                    <th scope="col-2">Compte</th>
+                                    <th scope="col-1">Admin</th>
                                     <th scope="col-1">email</th>
                                     <th scope="col-1">Status</th>
-                                    <th scope="col-3">Action</th>
+                                    <th scope="col-2">Date</th>
+                                    <th scope="col-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
-                                    @foreach ($whitelists as $k => $whitelist)  
+                                @foreach ($whitelists as $whitelist)                
+                                    @foreach ($users as $user)  
                                         @if ($whitelist->member_id == $user->member_id)
                                          
-                                            <tr class="text-align-center">
-                                                <td class="col-1">{{ $k+1 }}</td>
-                                                <td class="col-3"><a href="http://forum.california-rp.fr/index.php?/profile/{{ $user->member_id }}-{{ $user->name }}/">{{ $user->name }}</a></td>
+                                            <tr class="text-align-center">     
+                                                <td class="col-2"><a href="http://forum.california-rp.fr/index.php?/profile/{{ $user->member_id }}-{{ $user->name }}/">{{ $user->name }}</a></td>
+                                                <td class="col-1"><span class="badge badge-default">{{ $whitelist->admin ? $whitelist->admin : "Non pris en charge" }}</span></td>
                                                 <td class="col-1"><span class="badge badge-default">{{ $user->email }}</span></td>
                                                 @if ($whitelist->statut == 1)
-                                                    <td class="col-2"><span class="badge badge-warning">En attente</span></td>
+                                                    <td class="col-1"><span class="badge badge-warning">En attente</span></td>
                                                 @elseif ($whitelist->statut == 2)
-                                                    <td class="col-2"><span class="badge badge-success">Accepté</span></td>
+                                                    <td class="col-1"><span class="badge badge-success">Accepté</span></td>
                                                 @elseif ($whitelist->statut == 3)
-                                                    <td class="col-2"><span class="badge badge-danger">Refusé</span></td>
-                                                @endif          
-                                                <td class="col-3"><a class="btn btn-primary" href="{{ route('whitelist.show', $whitelist->id) }}" role="button">Sélectionner</a>
+                                                    <td class="col-1"><span class="badge badge-danger">Refusé</span></td>
+                                                @endif
+                                                <td class="col-2"><span class="badge badge-default">{{ $whitelist->updated_at->translatedFormat('j F Y à h\hi') }}</span></td>        
+                                                <td class="col-2"><a class="btn btn-primary" href="{{ route('whitelist.show', $whitelist->id) }}" role="button">Sélectionner</a>
                                             </tr>
                                         @endif 
                                     @endforeach
@@ -65,7 +67,7 @@
                             </tbody>
                         </table>
                     </div>
-                    {{ $whitelists->links() }} 
+                    
                 @endif
             </div>
         </div>

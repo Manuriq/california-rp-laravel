@@ -55,10 +55,12 @@
         <img class="sidebar-card-illustration mb-2" src="{{ asset('img/discord.png') }}" alt="...">
         @if (Auth::User()->discord_id == 0)
             <p class="text-center mb-2">Synchronisez votre <strong>Discord</strong> pour pouvoir vous connecter en jeu et sur notre serveur Discord!</p>
+            <a class="btn btn-primary btn-sm" href="{{ route('discord') }}">Synchroniser Discord!</a>
         @else
-            <p class="text-center mb-2">Votre <strong>Discord</strong> est correctement synchronisé!</p>
+            <p class="text-center mb-2">Bravo <strong>{{ Auth::User()->discord_name }}#{{ Auth::User()->discord_disc }}</strong>! Vous êtes correctement synchronisé!</p>
+            <a class="btn btn-primary btn-sm" href="{{ route('discord') }}">Re-Synchroniser Discord!</a>
         @endif
-        <a class="btn btn-primary btn-sm" href="{{ route('discord') }}">Synchroniser Discord!</a>
+        
     </div>
     
 

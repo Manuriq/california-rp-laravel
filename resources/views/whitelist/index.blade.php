@@ -36,7 +36,7 @@
                             {!! $whitelist->comment !!}<br>
                         @endif
                         ({{ $whitelist->tryout }}/3 tentatives)
-                    @elseif ($whitelist->statut == 3 && $whitelist->tryout > 2)
+                    @elseif ($whitelist->statut == 3 && $whitelist->tryout < 3)
                         Votre demande de whitelist a été traité par {{ $whitelist->admin }}. Vous avez été refusée. Commentaire Staff:<br>
                         @if ($whitelist->comment == "")
                             <p>Aucun commentaire.</p><br>
