@@ -44,14 +44,14 @@ class WhitelistController extends Controller
     {    
 
         $whitelists = Whitelist::where('statut', "=", $request->statut)->paginate(10);
-
+        
         $users = User::query()
             ->where('name', 'LIKE','%'.$request->search.'%')
             ->orWhere('email', 'LIKE','%'.$request->search.'%')
             ->orWhere('discord_name', 'LIKE','%'.$request->search.'%')
             ->orWhere('discord_id', 'LIKE','%'.$request->search.'%')
             ->orWhere('discord_email', 'LIKE','%'.$request->search.'%')
-            ->paginate(10);
+            ->get();
         
         return view('whitelist.list', [
             'whitelists' => $whitelists,
@@ -76,10 +76,7 @@ class WhitelistController extends Controller
                 'whitelist' => $whitelist,
             ]);
         }
-        $whitelist->tryout++;
-
-        $whitelist->save();
-
+        
         return view('whitelist.update', [
             'whitelist' => $whitelist
         ]);
@@ -132,6 +129,7 @@ class WhitelistController extends Controller
      */
     public function update(Request $request, Whitelist $whitelist)
     {
+        
         $whitelist->update([
             'res_a' => $request->res_a,
             'res_b' => $request->res_b,
@@ -140,6 +138,7 @@ class WhitelistController extends Controller
             'res_e' => $request->res_e,
             'res_f' => $request->res_f,
             'statut' => 1,
+            'tryout' => $whitelist->tryout+1
           ]);
           
           Session::flash('title', 'Félicitation !'); 

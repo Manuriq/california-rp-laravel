@@ -26,6 +26,7 @@
                     </select>
                     <input type="submit" class="btn btn-primary my-2" value="Chercher">
                 </form>
+               
                 @if ($whitelists->count() == 0)
                         Il n'y a <span class="text-primary">aucune</span> demande de whitelist en cours.
                 @else    
@@ -42,8 +43,9 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                    @foreach ($whitelists as $k => $whitelist)    
+                                    @foreach ($whitelists as $k => $whitelist)  
                                         @if ($whitelist->member_id == $user->member_id)
+                                         
                                             <tr class="text-align-center">
                                                 <td class="col-1">{{ $k+1 }}</td>
                                                 <td class="col-3"><a href="http://forum.california-rp.fr/index.php?/profile/{{ $user->member_id }}-{{ $user->name }}/">{{ $user->name }}</a></td>
