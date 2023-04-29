@@ -11,9 +11,9 @@ A web application created with Laravel for the San Andreas Multiplayer Californi
 ### Installation
 
 ```bash
-    composer install
+composer install
 ```
 
 ```bash
-    npm install
+npm install
 ```
